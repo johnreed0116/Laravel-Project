@@ -39,7 +39,9 @@
     @include('admin._header')
     @include('admin._sidebar')
     @include('admin._nav')
-    @include('admin._content')
+
+    @yield('content')
+
     @include('admin._footer')
 
 </html>

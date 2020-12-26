@@ -8,7 +8,7 @@
     <meta name="author" content="Berke Kiran">
 
     <!-- Title Page-->
-    <title>Business Website Project - Admin Login Page</title>
+    <title>Admin Login Page</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('assets')}}/admin/css/font-face.css" rel="stylesheet" media="all">

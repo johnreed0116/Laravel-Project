@@ -22,7 +22,18 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin')->middleware('auth');
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
+
+    Route::get('menu', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu');
+    Route::get('menu/add', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu_add');
+    Route::get('menu/update', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu_update');
+    Route::get('menu/delete', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu_delete');
+    Route::get('menu/show', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu_show');
+
+});
+
+//Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin')->middleware('auth');
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('Admin_logincheck');
 Route::get('/admin/logout', [HomeController::class, 'logout'])->name('Admin_logout');
