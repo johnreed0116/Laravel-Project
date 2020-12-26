@@ -163,7 +163,7 @@
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="{{ route('Admin_logout') }}">
+                                        <a href="{{ route('admin_logout') }}">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>

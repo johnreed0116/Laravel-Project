@@ -45,7 +45,7 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form action="{{ route('Admin_logincheck') }}" method="post">
+                        <form action="{{ route('admin_logincheck') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>Email Address</label>
