@@ -130,21 +130,22 @@
                                 <div class="image">
                                     <img src="{{ asset('assets')}}/admin/images/icon/avatar-01.jpg" alt="John Doe" />
                                 </div>
+                                @auth
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">john doe</a>
+                                    <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('assets')}}/admin/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                <img src="{{ asset('assets')}}/admin/images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
                                             </a>
                                         </div>
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#">john doe</a>
+                                                <a href="#">{{ Auth::user()->name }}</a>
                                             </h5>
-                                            <span class="email">johndoe@example.com</span>
+                                            <span class="email">{{ Auth::user()->email }}</span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -162,10 +163,11 @@
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="#">
+                                        <a href="{{ route('Admin_logout') }}">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
+                                @endauth
                             </div>
                         </div>
                     </div>
