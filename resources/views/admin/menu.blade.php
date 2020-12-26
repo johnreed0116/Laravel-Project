@@ -44,9 +44,12 @@
                                         <td>{{ $rs->image }}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
+                                                <a href="{{ route('admin_menu_edit', ['id'=>$rs->id]) }}">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>
+                                                </a>
+                                                <span style="margin-right: 20px;"></span>
                                                 <a href="{{ route('admin_menu_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this menu! Are you sure?')">
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                         <i class="zmdi zmdi-delete"></i>

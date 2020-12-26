@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -81,19 +82,30 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menulist = DB::table('menus')->get()->where('parent_id', 0);
+
+        return  view('admin.menu_edit', ['menu' => $menu, 'menulist' => $menulist]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->parent_id = $request->input('parent_id');
+        $menu->title = $request->input('title');
+        $menu->keywords = $request->input('keywords');
+        $menu->description = $request->input('description');
+        $menu->image = $request->input('image');
+        $menu->status = $request->input('status');
+        $menu->save();
+
+        return redirect()->route('admin_menu');
     }
 
     /**
