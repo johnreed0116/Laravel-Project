@@ -45,8 +45,8 @@
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>
                                             <select name="status" id="select" class="form-control">
-                                                <option value="0">False</option>
-                                                <option value="1">True</option>
+                                                <option value="False">False</option>
+                                                <option value="True">True</option>
                                             </select>
                                         </div>
                                         <div>
