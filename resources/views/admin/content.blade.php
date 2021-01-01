@@ -36,7 +36,11 @@
                                         <td>{{ $rs->menu_id }}</td>
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->type }}</td>
-                                        <td>{{ $rs->image }}</td>
+                                        <td>
+                                            @if ($rs->image)
+                                                <img src="{{ Storage::url($rs->image) }}" height="30" alt="" >
+                                            @endif
+                                        </td>
                                         <td>
                                             <span class="status--process">{{ $rs->status }}</span>
                                         </td>

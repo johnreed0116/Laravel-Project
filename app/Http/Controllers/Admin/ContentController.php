@@ -8,6 +8,7 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
@@ -60,7 +61,7 @@ class ContentController extends Controller
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
-        $content->image = $request->input('image');
+        $content->image = Storage::putFile('images', $request->file('image'));
         $content->status = $request->input('status');
         $content->save();
 
@@ -106,7 +107,7 @@ class ContentController extends Controller
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
-        $content->image = $request->input('image');
+        $content->image = Storage::putFile('images', $request->file('image'));
         $content->status = $request->input('status');
         $content->save();
 

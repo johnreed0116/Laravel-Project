@@ -28,7 +28,7 @@
                                         <h3 class="text-center title-2">Content</h3>
                                     </div>
                                     <hr>
-                                    <form action="{{ route('admin_content_store') }}" method="post">
+                                    <form action="{{ route('admin_content_store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label class="control-label mb-1">Menu Id</label>
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Image</label>
-                                            <input name="image" type="text" class="form-control" value="" data-val="true">
+                                            <input name="image" type="file" class="form-control" value="" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>
