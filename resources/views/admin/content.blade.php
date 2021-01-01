@@ -26,6 +26,7 @@
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Image</th>
+                                    <th>Image Gallery</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
@@ -40,6 +41,9 @@
                                             @if ($rs->image)
                                                 <img src="{{ Storage::url($rs->image) }}" height="30" alt="" >
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a style="opacity: 50%;" href="{{ route('admin_image_add', ['content_id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=120 left=120 width=640 height=720')"><img height="25" src="{{ asset('assets/admin/images/') }}/images-icon.svg"></a>
                                         </td>
                                         <td>
                                             <span class="status--process">{{ $rs->status }}</span>
