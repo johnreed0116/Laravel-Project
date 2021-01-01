@@ -31,6 +31,8 @@
     <!-- Main CSS-->
     <link href="{{ asset('assets')}}/admin/css/theme.css" rel="stylesheet" media="all">
 
+    @yield('javascript')
+
 </head>
 
 <body class="animsition">
