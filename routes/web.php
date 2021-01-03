@@ -25,6 +25,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
+    #Menu
     Route::get('menu', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin_menu');
     Route::get('menu/add', [\App\Http\Controllers\Admin\MenuController::class, 'add'])->name('admin_menu_add');
     Route::post('menu/create', [\App\Http\Controllers\Admin\MenuController::class, 'create'])->name('admin_menu_create');
@@ -33,6 +34,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('menu/delete/{id}', [\App\Http\Controllers\Admin\MenuController::class, 'delete'])->name('admin_menu_delete');
     Route::get('menu/show', [\App\Http\Controllers\Admin\MenuController::class, 'show'])->name('admin_menu_show');
 
+    #Content
     Route::prefix('content')->group(function (){
         Route::get('/', [\App\Http\Controllers\Admin\ContentController::class, 'index'])->name('admin_content');
         Route::get('add', [\App\Http\Controllers\Admin\ContentController::class, 'add'])->name('admin_content_add');
@@ -43,12 +45,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [\App\Http\Controllers\Admin\ContentController::class, 'show'])->name('admin_content_show');
     });
 
+    #Image
     Route::prefix('image')->group(function (){
         Route::get('add/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'add'])->name('admin_image_add');
         Route::post('store/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
         Route::get('delete/{id}/{content_id}', [\App\Http\Controllers\Admin\ImageController::class, 'delete'])->name('admin_image_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
     });
+
+    #Setting
+    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+    Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 });
 

@@ -16,6 +16,10 @@
                     <a class="js-arrow" href="{{ route('admin_content') }}">
                         <i class="fas fa-chart-bar"></i>Content</a>
                 </li>
+                <li class="active">
+                    <a class="js-arrow" href="{{ route('admin_setting') }}">
+                        <i class="fas fa-wrench"></i>Setting</a>
+                </li>
             </ul>
         </nav>
     </div>
