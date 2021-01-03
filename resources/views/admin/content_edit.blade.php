@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Image</label>
-                                            <input name="image" type="file" class="form-control" value="{{ $content->image }} data-val="true">
+                                            <input name="image" type="file" class="form-control" data-val="true">
                                             @if ($content->image)
                                                 <img src="{{ Storage::url($content->image) }}" style="margin-top: 25px;" height="240" alt="">
                                             @endif

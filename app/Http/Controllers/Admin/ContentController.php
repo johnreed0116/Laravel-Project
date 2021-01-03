@@ -107,7 +107,9 @@ class ContentController extends Controller
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
-        $content->image = Storage::putFile('images', $request->file('image'));
+        if($request->file('image')!=null) {
+            $content->image = Storage::putFile('images', $request->file('image'));
+        }
         $content->status = $request->input('status');
         $content->save();
 

@@ -34,7 +34,7 @@
                                 @foreach ($contentlist as $rs)
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->menu_id }}</td>
+                                        <td>{{ $rs->menu->title }}</td>
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->type }}</td>
                                         <td>
