@@ -5,19 +5,17 @@
             <div class="col-lg-6">
                 <div class="social-media">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        @if($setting->facebook != null)<li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>@endif
+                        @if($setting->instagram != null)<li><a href="{{ $setting->instagram }}"><i class="fab fa-instagram"></i></a></li>@endif
+                        @if($setting->twitter != null)<li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>@endif
                     </ul>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="contact-details">
                     <ul>
-                        <li><i class="fas fa-phone fa-rotate-90"></i> +01 899 286 777</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 8/99 , North khailkoir, NY</li>
+                        <li><i class="fas fa-phone fa-rotate-90"></i> {{ $setting->phone }}</li>
+                        <li><i class="fas fa-map-marker-alt"></i> {{ $setting->address }}</li>
                     </ul>
                 </div>
             </div>

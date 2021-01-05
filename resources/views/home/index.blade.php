@@ -1,8 +1,8 @@
 @extends('layouts.home')
 
-@section('title', 'Business Website Project')
-@section('description', '2020 / BLM441 Special Topics I in Computer Engineering Course Project')
-@section('keywords', 'Business Website Project')
+@section('title', $setting->title)
+@section('description', $setting->description)
+@section('keywords', $setting->keywords)
 
 @section('content')
 

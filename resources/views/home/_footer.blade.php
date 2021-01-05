@@ -3,15 +3,19 @@
     <div class="container bottom_border">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col">
-                <h5 class="headin5_amrc col_white_amrc pt2">About Us</h5>
+                <h5 class="headin5_amrc col_white_amrc pt2">Address</h5>
                 <!--headin5_amrc-->
-                <p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <p class="mb10">
+                    {{ $setting->company }} <br>
+                    {{ $setting->address }} <br>
+                    <strong>Phone: </strong> {{ $setting->phone }} <br>
+                    <strong>Fax: </strong> {{ $setting->fax }} <br>
+                    <strong>Email: </strong> {{ $setting->email }} <br>
+                </p>
                 <ul class="footer-social">
-                    <li><a class="facebook hb-xs-margin" href="#"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>
-                    <li><a class="twitter hb-xs-margin" href="#"><span class="hb hb-xs spin hb-twitter"><i class="fab fa-twitter"></i></span></a></li>
-                    <li><a class="instagram hb-xs-margin" href="#"><span class="hb hb-xs spin hb-instagram"><i class="fab fa-instagram"></i></span></a></li>
-                    <li><a class="googleplus hb-xs-margin" href="#"><span class="hb hb-xs spin hb-google-plus"><i class="fab fa-google-plus-g"></i></span></a></li>
-                    <li><a class="dribbble hb-xs-margin" href="#"><span class="hb hb-xs spin hb-dribbble"><i class="fab fa-dribbble"></i></span></a></li>
+                    @if($setting->facebook != null)<li><a class="facebook hb-xs-margin" href="{{ $setting->facebook }}" target="_blank"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>@endif
+                    @if($setting->instagram != null)<li><a class="instagram hb-xs-margin" href="{{ $setting->instagram }}"><span class="hb hb-xs spin hb-instagram"><i class="fab fa-instagram"></i></span></a></li>@endif
+                    @if($setting->twitter != null)<li><a class="twitter hb-xs-margin" href="{{ $setting->twitter }}"><span class="hb hb-xs spin hb-twitter"><i class="fab fa-twitter"></i></span></a></li>@endif
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -63,8 +67,6 @@
         </div>
     </div>
     <div class="container">
-        <p class="copyright text-center">All Rights Reserved. &copy; 2018 <a href="#">Zonebiz</a> Design By :
-            <a href="https://html.design/">html design</a>
-        </p>
+        <p class="copyright text-center">All Rights Reserved. &copy; 2020 {{ $setting->company }}</p>
     </div>
 </footer>
