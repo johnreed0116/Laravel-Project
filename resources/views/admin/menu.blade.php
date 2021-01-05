@@ -22,19 +22,25 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Parent Id</th>
+                                    <th>Parent</th>
                                     <th>Title</th>
                                     <th>Image</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($menulist as $rs)
+                                @foreach ($menulist->sortBy('id') as $rs)
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->parent_id }}</td>
+                                        <td>
+                                            {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}
+                                        </td>
                                         <td>{{ $rs->title }}</td>
-                                        <td>{{ $rs->image }}</td>
+                                        <td>
+                                            @if ($rs->image)
+                                                <img src="{{ Storage::url($rs->image) }}" height="30" alt="" >
+                                            @endif
+                                        </td>
                                         <td>
                                             <span class="status--process">{{ $rs->status }}</span>
                                         </td>

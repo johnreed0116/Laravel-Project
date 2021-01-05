@@ -30,11 +30,11 @@
                                     <form action="{{ route('admin_content_update', ['id' => $content->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="control-label mb-1">Menu Id</label>
+                                            <label class="control-label mb-1">Menu</label>
                                             <select name="menu_id" id="select" class="form-control">
                                                 <option value="0">Main Menu</option>
                                                 @foreach ($menulist as $rs)
-                                                <option value="{{ $rs->id }}" @if ($rs->id == $content->menu_id) selected="selected" @endif>{{ $rs->title }}</option>
+                                                <option value="{{ $rs->id }}" @if ($rs->id == $content->menu_id) selected="selected" @endif>{{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

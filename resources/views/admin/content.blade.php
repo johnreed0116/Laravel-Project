@@ -22,7 +22,7 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Menu Id</th>
+                                    <th>Menu</th>
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Image</th>
@@ -31,10 +31,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($contentlist as $rs)
+                                @foreach ($contentlist->sortBy('id') as $rs)
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->menu->title }}</td>
+                                        <td>
+                                            {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu, $rs->menu->title) }}
+                                        </td>
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->type }}</td>
                                         <td>

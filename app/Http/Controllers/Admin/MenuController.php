@@ -6,9 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
+
+    protected $appends = [
+        'getParentsTree',
+    ];
+
+    public static function getParentsTree($menu, $title){
+        if($menu->parent_id == 0){
+            return $title;
+        }
+        $parent = Menu::find($menu->parent_id);
+        $title = $parent->title . '>' . $title;
+        return MenuController::getParentsTree($parent, $title);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +31,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menulist = DB::table('menus')->get();
+        $menulist = Menu::with('children')->get();
 
         return view('admin.menu', ['menulist' => $menulist]);
     }
@@ -28,7 +43,7 @@ class MenuController extends Controller
      */
     public function add()
     {
-        $menulist = DB::table('menus')->get()->where('parent_id', 0);
+        $menulist = Menu::with('children')->get();
 
         return view('admin.menu_add', ['menulist' => $menulist]);
     }
@@ -40,14 +55,17 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        DB::table('menus')->insert([
-            'parent_id' => $request->input('parent_id'),
-            'title' => $request->input('title'),
-            'keywords' => $request->input('keywords'),
-            'description' => $request->input('description'),
-            'image' => $request->input('image'),
-            'status' => $request->input('status')
-        ]);
+
+        $menu = new Menu();
+        $menu->parent_id = $request->input('parent_id');
+        $menu->title = $request->input('title');
+        $menu->keywords = $request->input('keywords');
+        $menu->description = $request->input('description');
+        if($request->file('image')!=null) {
+            $menu->image = Storage::putFile('images', $request->file('image'));
+        }
+        $menu->status = $request->input('status');
+        $menu->save();
 
         return redirect()->route('admin_menu');
     }
@@ -83,7 +101,7 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::find($id);
-        $menulist = DB::table('menus')->get()->where('parent_id', 0);
+        $menulist = Menu::with('children')->get();
 
         return  view('admin.menu_edit', ['menu' => $menu, 'menulist' => $menulist]);
     }
@@ -100,7 +118,9 @@ class MenuController extends Controller
         $menu->title = $request->input('title');
         $menu->keywords = $request->input('keywords');
         $menu->description = $request->input('description');
-        $menu->image = $request->input('image');
+        if($request->file('image')!=null) {
+            $menu->image = Storage::putFile('images', $request->file('image'));
+        }
         $menu->status = $request->input('status');
         $menu->save();
 
@@ -115,7 +135,10 @@ class MenuController extends Controller
      */
     public function delete($id)
     {
+        //DB::table('menus')->truncate();
         DB::table('menus')->where('id','=',$id)->delete();
+        $max = DB::table('menus')->max('id') + 1;
+        DB::statement("ALTER TABLE menus AUTO_INCREMENT =  $max");
         return redirect()->route('admin_menu');
     }
 }

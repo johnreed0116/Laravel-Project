@@ -30,10 +30,10 @@
                                     <form action="{{ route('admin_content_store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="control-label mb-1">Menu Id</label>
+                                            <label class="control-label mb-1">Menu</label>
                                             <select name="menu_id" id="select" class="form-control">
                                                 @foreach ($menulist as $rs)
-                                                <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                                <option value="{{ $rs->id }}">{{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

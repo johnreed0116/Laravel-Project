@@ -99,6 +99,8 @@ class ImageController extends Controller
     {
         $image = Image::find($id);
         $image->delete();
+        $max = DB::table('images')->max('id') + 1;
+        DB::statement("ALTER TABLE images AUTO_INCREMENT =  $max");
 
         return redirect()->route('admin_image_add', ['content_id' => $content_id]);
     }

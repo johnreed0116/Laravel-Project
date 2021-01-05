@@ -30,7 +30,7 @@ class ContentController extends Controller
      */
     public function add()
     {
-        $menulist = Menu::all();
+        $menulist = Menu::with('children')->get();
 
         return view('admin.content_add', ['menulist' => $menulist]);
     }
@@ -61,7 +61,9 @@ class ContentController extends Controller
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
-        $content->image = Storage::putFile('images', $request->file('image'));
+        if($request->file('image')!=null) {
+            $content->image = Storage::putFile('images', $request->file('image'));
+        }
         $content->status = $request->input('status');
         $content->save();
 
@@ -87,7 +89,7 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::find($id);
-        $menulist = Menu::all();
+        $menulist = Menu::with('children')->get();
 
         return  view('admin.content_edit', ['content' => $content, 'menulist' => $menulist]);
     }
@@ -126,6 +128,8 @@ class ContentController extends Controller
     {
         $content = Content::find($id);
         $content->delete();
+        $maxId = DB::table('contents')->max('id') + 1;
+        DB::statement("ALTER TABLE contents AUTO_INCREMENT =  $maxId");
 
         return redirect()->route('admin_content');
     }

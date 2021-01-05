@@ -15,14 +15,14 @@
                                         <h3 class="text-center title-2">Menu</h3>
                                     </div>
                                     <hr>
-                                    <form action="{{ route('admin_menu_create') }}" method="post">
+                                    <form action="{{ route('admin_menu_create') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="control-label mb-1">Parent Id</label>
+                                            <label class="control-label mb-1">Parent</label>
                                             <select name="parent_id" id="select" class="form-control">
                                                 <option value="0">Main Menu</option>
                                                 @foreach ($menulist as $rs)
-                                                <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                                <option value="{{ $rs->id }}">{{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Image</label>
-                                            <input name="image" type="text" class="form-control" value="" data-val="true">
+                                            <input name="image" type="file" class="form-control" value="" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>
