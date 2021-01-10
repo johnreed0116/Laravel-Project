@@ -99,7 +99,17 @@ p {
 
 /* ----- Typography ----- */
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.625;
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.note-editable{
+    font-family: "Poppins", sans-serif !important;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.625;

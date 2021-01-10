@@ -26,6 +26,9 @@ Route::get('/welcome', function () {
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
