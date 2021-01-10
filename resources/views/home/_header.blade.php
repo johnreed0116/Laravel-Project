@@ -1,40 +1,90 @@
-<header class="slider-main">
-    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('{{ asset('assets')}}/images/slider-01.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Welcome to Zonebiz</h3>
-                    <p>A Great Theme For Business Consulting</p>
+<!-- Navigation -->
+
+@php
+    $parentMenus = \App\Http\Controllers\HomeController::menuList();
+@endphp
+
+<header>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="social-media">
+                        <ul>
+                            @if($setting->facebook != null)<li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>@endif
+                            @if($setting->instagram != null)<li><a href="{{ $setting->instagram }}"><i class="fab fa-instagram"></i></a></li>@endif
+                            @if($setting->twitter != null)<li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>@endif
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('{{ asset('assets')}}/images/slider-02.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Best Consulting Services.</h3>
-                    <p>A Great Theme For Business Consulting</p>
-                </div>
-            </div>
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('{{ asset('assets')}}/images/slider-03.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Welcome to Zonebiz</h3>
-                    <p>A Great Theme For Business Consulting</p>
+                <div class="col-lg-6">
+                    <div class="contact-details">
+                        <ul>
+                            <li><i class="fas fa-phone fa-rotate-90"></i> {{ $setting->phone }}</li>
+                            <li><i class="fas fa-map-marker-alt"></i> {{ $setting->address }}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="{{ asset('assets')}}/images/logo.png" alt="logo" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    @foreach($parentMenus->sortBy('id') as $rs)
+
+                        @if(count($rs->children)==0)
+                            <li class="nav-item">
+                                <a class="nav-link" href="">{{$rs->title}}</a>
+                            </li>
+                        @endif
+
+                        @if(count($rs->children)!=0)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{$rs->title}} <i class="fas fa-sort-down"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                    @if(count($rs->children))
+                                        @include('home.menutree',['children'=> $rs->children])
+                                    @endif
+                                </div>
+                            </li>
+                        @endif
+
+                    @endforeach
+
+                    <li class="nav-item">
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b> {{ Auth::user()->name }} </b><i class="fas fa-sort-down"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                <a class="dropdown-item" href="{{ route('profile') }}"><i style="margin-right: 20px;" class="fas fa-user-cog"></i><b>My Account</b></a>
+                                <a class="dropdown-item" href="{{ route('admin_logout') }}"><i style="margin-right: 20px;" class="fas fa-user-times"></i><b>Logout</b></a>
+                            </div>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="margin-right: 20px;" class="fas fa-user"></i><b> Login / Join </b><i class="fas fa-sort-down"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                <a class="dropdown-item" href="{{ route('admin_login') }}"><i style="margin-right: 20px;" class="fas fa-user-lock"></i><b>Login</b></a>
+                                <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-user-plus"></i><b>Register</b></a>
+                            </div>
+                        </li>
+                        @endguest
+                        </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>

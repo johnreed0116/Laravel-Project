@@ -20,8 +20,6 @@
 </head>
 <body>
 <div class="wrapper-main">
-    @include('home._topbar')
-    @include('home._nav')
     @include('home._header')
 
     @yield('content')
