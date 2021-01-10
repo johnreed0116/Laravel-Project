@@ -1,7 +1,7 @@
 <!-- Navigation -->
 
 @php
-    $parentMenus = \App\Http\Controllers\HomeController::menuList();
+  $parentMenus = \App\Http\Controllers\HomeController::menuList();
 @endphp
 
 <header>
@@ -63,25 +63,25 @@
                     @endforeach
 
                     <li class="nav-item">
-                    @auth
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b> {{ Auth::user()->name }} </b><i class="fas fa-sort-down"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <a class="dropdown-item" href="{{ route('profile') }}"><i style="margin-right: 20px;" class="fas fa-user-cog"></i><b>My Account</b></a>
-                                <a class="dropdown-item" href="{{ route('admin_logout') }}"><i style="margin-right: 20px;" class="fas fa-user-times"></i><b>Logout</b></a>
-                            </div>
-                        </li>
-                    @endauth
-                    @guest
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="margin-right: 20px;" class="fas fa-user"></i><b> Login / Join </b><i class="fas fa-sort-down"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <a class="dropdown-item" href="{{ route('admin_login') }}"><i style="margin-right: 20px;" class="fas fa-user-lock"></i><b>Login</b></a>
-                                <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-user-plus"></i><b>Register</b></a>
-                            </div>
-                        </li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b> {{ Auth::user()->name }} </b><i class="fas fa-sort-down"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                    <a class="dropdown-item" href="{{ route('profile') }}"><i style="margin-right: 20px;" class="fas fa-user-cog"></i><b>My Account</b></a>
+                                    <a class="dropdown-item" href="{{ route('admin_logout') }}"><i style="margin-right: 20px;" class="fas fa-user-times"></i><b>Logout</b></a>
+                                </div>
+                            </li>
+                        @endauth
+                        @guest
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="margin-right: 20px;" class="fas fa-user"></i><b> Login / Join </b><i class="fas fa-sort-down"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                    <a class="dropdown-item" href="{{ route('login') }}"><i style="margin-right: 20px;" class="fas fa-user-lock"></i><b>Login</b></a>
+                                    <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-user-plus"></i><b>Register</b></a>
+                                </div>
+                            </li>
                         @endguest
-                        </li>
+                    </li>
 
                 </ul>
             </div>

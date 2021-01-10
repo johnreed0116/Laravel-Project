@@ -92,6 +92,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade show" id="nav-smtp" role="tabpanel" aria-labelledby="nav-smtp-tab">
+                                                <br>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Smtp Server</label>
                                                     <input name="smtpserver" type="text" class="form-control" value="{{ $setting->smtpserver }}" data-val="true">
@@ -110,6 +111,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade show" id="nav-social" role="tabpanel" aria-labelledby="nav-social-tab">
+                                                <br>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Facebook</label>
                                                     <input name="facebook" type="text" class="form-control" value="{{ $setting->facebook }}" data-val="true">
@@ -124,18 +126,21 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade show" id="nav-aboutus" role="tabpanel" aria-labelledby="nav-aboutus-tab">
+                                                <br>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">About Us</label>
                                                     <textarea name="aboutus" id="aboutus">{{ $setting->aboutus }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade show" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <br>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Contact</label>
                                                     <textarea name="contact" id="contact">{{ $setting->contact }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade show" id="nav-references" role="tabpanel" aria-labelledby="nav-references-tab">
+                                                <br>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">References</label>
                                                     <textarea name="references" id="references">{{ $setting->references }}</textarea>

@@ -28,7 +28,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('admin_home');
+    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
     #Menu
     Route::get('menu', [MenuController::class, 'index'])->name('admin_menu');
@@ -68,11 +68,17 @@ Route::middleware('auth')->prefix('account')->namespace('account')->group(functi
     Route::get('/', [UserController::class, 'index'])->name('profile');
 });
 
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+    Route::get('/profile', [UserController::class, 'index'])->name('userprofile');
+});
+
 //Route::get('/admin', [HomeController::class, 'index'])->name('admin')->middleware('auth');
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
 
+/*
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+*/

@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function index(){
         $setting = Setting::first();
-        return view('home.user_profile', ['setting'=>$setting]);
+        return view('home.account_profile', ['setting'=>$setting]);
     }
 
     /**
@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

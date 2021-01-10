@@ -54,6 +54,7 @@ class HomeController extends Controller
 
         $request->session()->regenerateToken();
 
-        return view('admin.login');
+        $setting = Setting::first();
+        return redirect('/');
     }
 }
