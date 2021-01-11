@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -81,6 +82,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('update/{id}', [MessageController::class, 'update'])->name('admin_message_update');
         Route::get('delete/{id}', [MessageController::class, 'delete'])->name('admin_message_delete');
         Route::get('show', [MessageController::class, 'show'])->name('admin_message_show');
+    });
+
+    #Services
+    Route::prefix('service')->group(function (){
+        Route::get('/', [ServiceController::class, 'index'])->name('admin_service');
+        Route::get('add', [ServiceController::class, 'add'])->name('admin_service_add');
+        Route::post('store', [ServiceController::class, 'store'])->name('admin_service_store');
+        Route::get('edit/{id}', [ServiceController::class, 'edit'])->name('admin_service_edit');
+        Route::post('update/{id}', [ServiceController::class, 'update'])->name('admin_service_update');
+        Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('admin_service_delete');
+        Route::get('show', [ServiceController::class, 'show'])->name('admin_service_show');
     });
 
 });

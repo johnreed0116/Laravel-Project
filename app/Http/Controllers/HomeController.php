@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Content;
 use App\Models\Menu;
 use App\Models\Message;
+use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,13 @@ class HomeController extends Controller
         $menu = Menu::find($id);
 
         return view('home.menu_content', ['menucontent'=>$menucontent, 'menu' => $menu]);
+    }
+
+    public function services(){
+        $setting = Setting::first();
+        $servicelist = Service::all();
+
+        return view('home.services', ['setting'=>$setting, 'servicelist' => $servicelist]);
     }
 
     public function aboutus(){

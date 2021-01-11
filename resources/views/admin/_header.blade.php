@@ -34,6 +34,10 @@
                             <i class="fas fa-chart-bar"></i>Contents</a>
                     </li>
                     <li>
+                        <a class="js-arrow" href="{{ route('admin_service') }}">
+                            <i class="fas fa-pencil-alt"></i>Services</a>
+                    </li>
+                    <li>
                         <a class="js-arrow" href="{{ route('admin_message') }}">
                             <i class="fas fa-envelope"></i>Messages</a>
                     </li>
