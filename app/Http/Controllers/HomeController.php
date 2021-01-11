@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
+use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Message;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use MongoDB\Driver\Session;
 
 
@@ -26,11 +28,14 @@ class HomeController extends Controller
     public function index(){
         $setting = Setting::first();
         $slider = Content::select('id','title','description','image','slug')->limit(3)->get();
+        $service = Service::select('id','title','description','image')->limit(6)->get();
+        $content = Content::select('id','title','description','image','type','slug')->limit(6)->get();
 
         $data = [
             'setting'=>$setting,
             'slider'=>$slider,
-            'page'=>'home'
+            'service'=>$service,
+            'content'=>$content
         ];
 
         return view('home.index', $data);
@@ -38,7 +43,9 @@ class HomeController extends Controller
 
     public function content($id, $slug){
         $content = Content::find($id);
-        print_r($content);
+        $imagelist = Image::where('content_id',$id)->get();
+
+        return view('home.content_detail', ['content' => $content, 'imagelist' => $imagelist]);
     }
 
     public function menucontent($id, $slug){
@@ -53,6 +60,12 @@ class HomeController extends Controller
         $servicelist = Service::all();
 
         return view('home.services', ['setting'=>$setting, 'servicelist' => $servicelist]);
+    }
+    public function blog(){
+        $menu = Menu::where('slug', 'blog')->first();
+        $contentlist = Content::all();
+
+        return view('home.blog', ['menu' => $menu, 'contentlist' => $contentlist]);
     }
 
     public function aboutus(){

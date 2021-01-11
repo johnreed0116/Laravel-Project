@@ -16,10 +16,7 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('blog') }}">Blog</a>
-                    </li>
-                    <li class="breadcrumb-item active">{{ $menu->title }}</li>
+                    <li class="breadcrumb-item active">Blog</li>
                 </ol>
             </div>
         </div>
@@ -32,7 +29,7 @@
                 <!-- Blog Entries Column -->
                 <div class="col-md-8 blog-entries">
 
-                    @foreach($menucontent as $rs)
+                    @foreach($contentlist as $rs)
                     <!-- Blog Post -->
                     <div class="card mb-4">
                         <img class="card-img-top" src="{{ Storage::url($rs->image) }}" alt="Card image Blog" />
