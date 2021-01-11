@@ -45,6 +45,7 @@
                                             <label class="control-label mb-1">Type</label>
                                             <select name="type" id="select" class="form-control">
                                                 <option value="Announcement">Announcement</option>
+                                                <option value="Event">Event</option>
                                                 <option value="News">News</option>
                                             </select>
                                         </div>

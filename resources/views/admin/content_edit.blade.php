@@ -47,6 +47,7 @@
                                             <select name="type" id="select" class="form-control">
                                                 <option selected="selected">{{ $content->type }}</option>
                                                 <option value="Announcement">Announcement</option>
+                                                <option value="Event">Event</option>
                                                 <option value="News">News</option>
                                             </select>
                                         </div>

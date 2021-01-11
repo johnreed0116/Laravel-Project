@@ -36,6 +36,8 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 
+Route::get('/content/{id}/{slug}', [HomeController::class, 'content'])->name('content');
+
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
