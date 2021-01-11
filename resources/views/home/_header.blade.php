@@ -1,9 +1,9 @@
-<!-- Navigation -->
-
 @php
   $parentMenus = \App\Http\Controllers\HomeController::menuList();
+  $setting = \App\Http\Controllers\HomeController::getSetting();
 @endphp
 
+<!-- Navigation -->
 <header>
     <!-- Top Bar -->
     <div class="top-bar">

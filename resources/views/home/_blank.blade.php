@@ -1,8 +1,8 @@
 @extends('layouts.home')
 
-@section('title', 'User Profile')
-@section('description', '')
-@section('keywords', '')
+@section('title', 'About Us')
+@section('description', $setting->description)
+@section('keywords', $setting->keywords)
 
 @section('content')
 
@@ -10,13 +10,13 @@
     <div class="full-title">
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3"> My Account </h1>
+            <h1 class="mt-4 mb-3"> About Us </h1>
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="breadcrumb-item active"> My Account </li>
+                    <li class="breadcrumb-item active"> About Us </li>
                 </ol>
             </div>
         </div>
@@ -26,8 +26,8 @@
         <div class="container">
             <div class="row">
                 <!-- Post Content Column -->
-                <div class="col-lg-8">
-                    @include('profile.show')
+                <div class="col-lg-16">
+
                 </div>
             </div>
             <!-- /.row -->
@@ -43,7 +43,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-secondary btn-block" href="#"> Contact Us </a>
+                    <a class="btn btn-lg btn-secondary btn-block" href="{{ route('contact') }}"> Contact Us </a>
                 </div>
             </div>
         </div>

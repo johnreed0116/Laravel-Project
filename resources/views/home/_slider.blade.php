@@ -22,7 +22,7 @@
                     <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
                         <h3>{{ $rs->title }}</h3>
                         <p>{{ $rs->description }}</p>
-                        <a href="{{ route('content', ['id'=>$rs->first()->id, 'slug'=>$rs->first()->slug]) }}">
+                        <a href="{{ route('content', ['id'=>$rs->id, 'slug'=>$rs->slug]) }}">
                             <button data-filter=".business" class="btn btn-dark">Go to Content</button>
                         </a>
                     </div>

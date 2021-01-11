@@ -1,3 +1,7 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getSetting();
+@endphp
+
 <!--footer starts from here-->
 <footer class="footer">
     <div class="container bottom_border">

@@ -18,6 +18,10 @@ class HomeController extends Controller
         return Menu::where('parent_id','=',0)->with('children')->get();
     }
 
+    public static function getSetting(){
+        return $setting = Setting::first();
+    }
+
     public function index(){
         $setting = Setting::first();
         $slider = Content::select('id','title','description','image','slug')->limit(3)->get();
@@ -34,6 +38,13 @@ class HomeController extends Controller
     public function content($id, $slug){
         $content = Content::find($id);
         print_r($content);
+    }
+
+    public function menucontent($id, $slug){
+        $menucontent = Content::where('menu_id', $id)->get();
+        $menu = Menu::find($id);
+
+        return view('home.menu_content', ['menucontent'=>$menucontent, 'menu' => $menu]);
     }
 
     public function aboutus(){
