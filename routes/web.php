@@ -40,6 +40,8 @@ Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendm
 Route::get('/content/{id}/{slug}', [HomeController::class, 'content'])->name('content');
 Route::get('/menucontent/{id}/{slug}', [HomeController::class, 'menucontent'])->name('menucontent');
 
+Route::post('/getcontent', [HomeController::class, 'getcontent'])->name('getcontent');
+
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 

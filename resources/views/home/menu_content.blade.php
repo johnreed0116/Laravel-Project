@@ -10,7 +10,7 @@
     <div class="full-title">
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3"> Blog </h1>
+            <h1 class="mt-4 mb-3"> {{ $content->title }} </h1>
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -67,10 +67,11 @@
                         <h5 class="card-header">Search</h5>
                         <div class="card-body">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-									<button class="btn btn-secondary" type="button">Go!</button>
-								</span>
+                                <form action="{{ route('getcontent') }}" method="post">
+                                    @csrf
+                                    @livewire('search')
+                                </form>
+                                @livewireScripts
                             </div>
                         </div>
                     </div>

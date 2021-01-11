@@ -55,12 +55,22 @@ class HomeController extends Controller
         return view('home.menu_content', ['menucontent'=>$menucontent, 'menu' => $menu]);
     }
 
+    public function getcontent(Request $request){
+        if ($request->input('search') != null) {
+            $content = Content::where('title', $request->input('search'))->first();
+            return redirect()->route('content', ['id' => $content->id, 'slug' => $content->slug]);
+        } else {
+            return back();
+        }
+    }
+
     public function services(){
         $setting = Setting::first();
         $servicelist = Service::all();
 
         return view('home.services', ['setting'=>$setting, 'servicelist' => $servicelist]);
     }
+
     public function blog(){
         $menu = Menu::where('slug', 'blog')->first();
         $contentlist = Content::all();
