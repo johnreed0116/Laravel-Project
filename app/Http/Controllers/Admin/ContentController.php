@@ -64,6 +64,7 @@ class ContentController extends Controller
         if($request->file('image')!=null) {
             $content->image = Storage::putFile('images', $request->file('image'));
         }
+        $content->slug = $request->input('slug');
         $content->status = $request->input('status');
         $content->save();
 
@@ -112,6 +113,7 @@ class ContentController extends Controller
         if($request->file('image')!=null) {
             $content->image = Storage::putFile('images', $request->file('image'));
         }
+        $content->slug = $request->input('slug');
         $content->status = $request->input('status');
         $content->save();
 

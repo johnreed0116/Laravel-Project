@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Content Page')
+@section('title', 'Add Content')
 
 @section('javascript')
 
@@ -44,9 +44,8 @@
                                         <div class="form-group">
                                             <label class="control-label mb-1">Type</label>
                                             <select name="type" id="select" class="form-control">
-                                                <option value="Menu">Menu</option>
-                                                <option value="Haber">Haber</option>
-                                                <option value="Duyuru">Duyuru</option>
+                                                <option value="Announcement">Announcement</option>
+                                                <option value="News">News</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -62,15 +61,19 @@
                                             <textarea name="detail"  id="detail"></textarea>
                                             <script>
                                                 $('#detail').summernote({
-                                                    placeholder: 'Hello Bootstrap 4',
                                                     tabsize: 2,
-                                                    height: 100
+                                                    height: 100,
+                                                    dialogsInBody: true
                                                 });
                                             </script>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Image</label>
                                             <input name="image" type="file" class="form-control" value="" data-val="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Slug</label>
+                                            <input name="slug" type="text" class="form-control" value="" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>

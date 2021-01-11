@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Menu Page')
+@section('title', 'Add Menu')
 
 @section('content')
     <!-- MAIN CONTENT-->
@@ -41,6 +41,10 @@
                                         <div class="form-group">
                                             <label class="control-label mb-1">Image</label>
                                             <input name="image" type="file" class="form-control" value="" data-val="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Slug</label>
+                                            <input name="slug" type="text" class="form-control" value="" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>

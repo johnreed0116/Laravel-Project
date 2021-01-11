@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Berke Kiran">
-    <title> Add Image Page </title>
+    <title> Add Image </title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('assets')}}/admin/css/font-face.css" rel="stylesheet" media="all">
@@ -80,7 +80,7 @@
                     </td>
                     <td>
                         <div class="table-data-feature">
-                            <a href="{{ route('admin_image_delete', ['id' => $rs->id, 'content_id' => $content->id]) }}" onclick="return confirm('You are deleting this menu! Are you sure?')">
+                            <a href="{{ route('admin_image_delete', ['id' => $rs->id, 'content_id' => $content->id]) }}" onclick="return confirm('You are deleting this image! Are you sure?')">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i class="zmdi zmdi-delete"></i>
                                 </button>

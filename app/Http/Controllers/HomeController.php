@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 
 
 class HomeController extends Controller
@@ -33,6 +35,19 @@ class HomeController extends Controller
     public function references(){
         $setting = Setting::first();
         return view('home.references', ['setting'=>$setting]);
+    }
+
+    public function sendmessage(Request $request){
+
+        $message = new Message();
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
+        $message->phone = $request->input('phone');
+        $message->subject = $request->input('subject');
+        $message->message = $request->input('message');
+        $message->save();
+
+        return redirect()->route('contact')->with('success', 'Your message sent, Thank you.');
     }
 
     public function login(){

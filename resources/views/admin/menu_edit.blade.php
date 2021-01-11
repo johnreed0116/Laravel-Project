@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Update Menu Page')
+@section('title', 'Update Menu')
 
 @section('content')
     <!-- MAIN CONTENT-->
@@ -44,6 +44,10 @@
                                             @if ($menu->image)
                                                 <img src="{{ Storage::url($menu->image) }}" style="margin-top: 25px;" height="240" alt="">
                                             @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Slug</label>
+                                            <input name="slug" type="text" class="form-control" value="{{ $menu->slug }}" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>

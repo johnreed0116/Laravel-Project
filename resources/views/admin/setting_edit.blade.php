@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Update Settings Page')
+@section('title', 'Settings')
 
 @section('javascript')
 
@@ -19,7 +19,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Setting</h4>
+                                <h4>Settings</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('admin_setting_update')}}" method="post" enctype="multipart/form-data">
@@ -146,7 +146,7 @@
                                     <div>
                                         <button id="add-button" type="submit" class="btn btn-lg btn-info btn-block">
                                             <i class="fa fa-lg"></i>&nbsp;
-                                            <span>Update the Setting</span>
+                                            <span>Update the Settings</span>
                                         </button>
                                     </div>
                                     <script>
@@ -161,7 +161,8 @@
                                                 ['table', ['table']],
                                                 ['insert', ['link', 'picture', 'video']],
                                                 ['view', ['fullscreen', 'codeview', 'help']]
-                                            ]
+                                            ],
+                                            dialogsInBody: true
                                         });
                                         $('#contact').summernote({
                                             tabsize: 2,
@@ -174,7 +175,8 @@
                                                 ['table', ['table']],
                                                 ['insert', ['link', 'picture', 'video']],
                                                 ['view', ['fullscreen', 'codeview', 'help']]
-                                            ]
+                                            ],
+                                            dialogsInBody: true
                                         });
                                         $('#references').summernote({
                                             tabsize: 2,
@@ -187,7 +189,8 @@
                                                 ['table', ['table']],
                                                 ['insert', ['link', 'picture', 'video']],
                                                 ['view', ['fullscreen', 'codeview', 'help']]
-                                            ]
+                                            ],
+                                            dialogsInBody: true
                                         });
                                     </script>
                                 </form>

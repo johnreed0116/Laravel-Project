@@ -27,15 +27,19 @@
                     </li>
                     <li>
                         <a class="js-arrow" href="{{ route('admin_menu') }}">
-                            <i class="fas fa-table"></i>Menu</a>
+                            <i class="fas fa-table"></i>Menus</a>
                     </li>
                     <li>
                         <a class="js-arrow" href="{{ route('admin_content') }}">
-                            <i class="fas fa-chart-bar"></i>Content</a>
+                            <i class="fas fa-chart-bar"></i>Contents</a>
+                    </li>
+                    <li>
+                        <a class="js-arrow" href="{{ route('admin_message') }}">
+                            <i class="fas fa-envelope"></i>Messages</a>
                     </li>
                     <li>
                         <a class="js-arrow" href="{{ route('admin_setting') }}">
-                            <i class="fas fa-wrench"></i>Setting</a>
+                            <i class="fas fa-wrench"></i>Settings</a>
                     </li>
                 </ul>
             </div>

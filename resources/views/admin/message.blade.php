@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Menus')
+@section('title', 'Messages')
 
 @section('content')
     <!-- MAIN CONTENT-->
@@ -10,49 +10,43 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- DATA TABLE -->
-                        <h3 class="title-5 m-b-35">Menus</h3>
-                        <div class="table-data__tool">
-                            <div class="table-data__tool-left">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i><a style="color:white;" href="{{ route('admin_menu_add') }}">Add Menu</a></button>
-                            </div>
-                        </div>
+                        <h3 class="title-5 m-b-35">Messages</h3>
                         <div class="table-responsive table-responsive-data2">
                             <table class="table table-data2">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Parent</th>
-                                    <th>Title</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Admin Note</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($menulist->sortBy('id') as $rs)
+                                @foreach ($messagelist->sortBy('id') as $rs)
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
-                                        <td>
-                                            {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}
-                                        </td>
-                                        <td>{{ $rs->title }}</td>
-                                        <td>
-                                            @if ($rs->image)
-                                                <img src="{{ Storage::url($rs->image) }}" height="30" alt="" >
-                                            @endif
-                                        </td>
+                                        <td>{{ $rs->name }}</td>
+                                        <td>{{ $rs->email }}</td>
+                                        <td>{{ $rs->phone }}</td>
+                                        <td>{{ $rs->subject }}</td>
+                                        <td>{{ $rs->message }}</td>
+                                        <td>{!! $rs->note !!}</td>
                                         <td>
                                             <span class="status--process">{{ $rs->status }}</span>
                                         </td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <a href="{{ route('admin_menu_edit', ['id'=>$rs->id]) }}">
+                                                <a href="{{ route('admin_message_edit', ['id'=>$rs->id]) }}"  onclick="return !window.open(this.href, '', 'top=120 left=120 width=640 height=720')">
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </button>
                                                 </a>
                                                 <span style="margin-right: 20px;"></span>
-                                                <a href="{{ route('admin_menu_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this menu! Are you sure?')">
+                                                <a href="{{ route('admin_message_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this message! Are you sure?')">
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>

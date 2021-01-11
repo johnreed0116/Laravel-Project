@@ -64,6 +64,7 @@ class MenuController extends Controller
         if($request->file('image')!=null) {
             $menu->image = Storage::putFile('images', $request->file('image'));
         }
+        $menu->slug = $request->input('slug');
         $menu->status = $request->input('status');
         $menu->save();
 
@@ -121,6 +122,7 @@ class MenuController extends Controller
         if($request->file('image')!=null) {
             $menu->image = Storage::putFile('images', $request->file('image'));
         }
+        $menu->slug = $request->input('slug');
         $menu->status = $request->input('status');
         $menu->save();
 

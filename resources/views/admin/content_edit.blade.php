@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Update Content Page')
+@section('title', 'Update Content')
 
 @section('javascript')
 
@@ -46,9 +46,8 @@
                                             <label class="control-label mb-1">Type</label>
                                             <select name="type" id="select" class="form-control">
                                                 <option selected="selected">{{ $content->type }}</option>
-                                                <option value="Menu">Menu</option>
-                                                <option value="Haber">Haber</option>
-                                                <option value="Duyuru">Duyuru</option>
+                                                <option value="Announcement">Announcement</option>
+                                                <option value="News">News</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -65,7 +64,8 @@
                                             <script>
                                                 $('#detail').summernote({
                                                     tabsize: 2,
-                                                    height: 100
+                                                    height: 100,
+                                                    dialogsInBody: true
                                                 });
                                             </script>
                                         </div>
@@ -75,6 +75,10 @@
                                             @if ($content->image)
                                                 <img src="{{ Storage::url($content->image) }}" style="margin-top: 25px;" height="240" alt="">
                                             @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Slug</label>
+                                            <input name="slug" type="text" class="form-control" value="{{ $content->slug }}" data-val="true">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-1">Status</label>

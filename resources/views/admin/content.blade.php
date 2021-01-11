@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Content Page')
+@section('title', 'Contents')
 
 @section('content')
     <!-- MAIN CONTENT-->
@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- DATA TABLE -->
-                        <h3 class="title-5 m-b-35">Content</h3>
+                        <h3 class="title-5 m-b-35">Contents</h3>
                         <div class="table-data__tool">
                             <div class="table-data__tool-left">
                                 <button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -58,7 +58,7 @@
                                                     </button>
                                                 </a>
                                                 <span style="margin-right: 20px;"></span>
-                                                <a href="{{ route('admin_content_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this menu! Are you sure?')">
+                                                <a href="{{ route('admin_content_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this content! Are you sure?')">
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
