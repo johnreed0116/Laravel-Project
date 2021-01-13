@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Content;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Message;
@@ -63,6 +64,13 @@ class HomeController extends Controller
         } else {
             return back();
         }
+    }
+
+    public function faq(){
+        $setting = Setting::first();
+        $faqlist = Faq::all()->sortBy('position');
+
+        return view('home.faq', ['setting'=>$setting, 'faqlist' => $faqlist]);
     }
 
     public function services(){

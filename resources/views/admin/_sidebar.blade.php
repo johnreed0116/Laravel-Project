@@ -33,6 +33,10 @@
                         <i class="fas fa-pencil-alt"></i>Services</a>
                 </li>
                 <li>
+                    <a class="js-arrow" href="{{ route('admin_faq') }}">
+                        <i class="fas fa-question-circle"></i>FAQ</a>
+                </li>
+                <li>
                     <a class="js-arrow" href="{{ route('admin_message') }}">
                         <i class="fas fa-envelope"></i>Messages</a>
                 </li>

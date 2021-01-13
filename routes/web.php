@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\MessageController;
@@ -93,6 +94,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('update/{id}', [CommentController::class, 'update'])->name('admin_comment_update');
         Route::get('delete/{id}', [CommentController::class, 'delete'])->name('admin_comment_delete');
         Route::get('show/{id}', [CommentController::class, 'show'])->name('admin_comment_show');
+    });
+
+    #Faq
+    Route::prefix('faq')->group(function (){
+        Route::get('/', [FaqController::class, 'index'])->name('admin_faq');
+        Route::get('add', [FaqController::class, 'add'])->name('admin_faq_add');
+        Route::post('store', [FaqController::class, 'store'])->name('admin_faq_store');
+        Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin_faq_edit');
+        Route::post('update/{id}', [FaqController::class, 'update'])->name('admin_faq_update');
+        Route::get('delete/{id}', [FaqController::class, 'delete'])->name('admin_faq_delete');
+        Route::get('show', [FaqController::class, 'show'])->name('admin_faq_show');
     });
 
     #Services
