@@ -10,7 +10,7 @@
     <div class="full-title">
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3"> {{ $content->title }} </h1>
+            <h1 class="mt-4 mb-3"> {{ $menu->title }} </h1>
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -38,7 +38,7 @@
                         <img class="card-img-top" src="{{ Storage::url($rs->image) }}" alt="Card image Blog" />
                         <div class="card-body">
                             <div class="by-post">
-                                Posted on January 1, 2018 by <a href="#">Zonebiz</a>
+                                Posted on {{ $rs->created_at->format('Y-m-d') }} by <span style="color: dodgerblue;">{{ $rs->user->name }}</span>
                             </div>
                             <h2 class="card-title">{{ $rs->title }}</h2>
                             <p class="card-text">{{ $rs->description }}</p>
@@ -47,17 +47,6 @@
                     </div>
                     @endforeach
 
-                    <div class="pagination_bar_arrow">
-                        <!-- Pagination -->
-                        <ul class="pagination justify-content-center mb-4">
-                            <li class="page-item">
-                                <a class="page-link" href="#">&larr; Older</a>
-                            </li>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#">Newer &rarr;</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
 
                 <!-- Sidebar Widgets Column -->
@@ -76,14 +65,7 @@
                         </div>
                     </div>
 
-                    <div class="card my-4">
-                        <h5 class="card-header">Menu</h5>
-                        <div class="card-body">
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-bullhorn"></i><b>Announcements</b></a>
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-calendar-alt"></i><b>Events</b></a>
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-newspaper"></i><b>News</b></a>
-                        </div>
-                    </div>
+                    @include('home.blogmenu')
                 </div>
 
             </div>

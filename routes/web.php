@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MenuController;
@@ -86,6 +87,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [MessageController::class, 'show'])->name('admin_message_show');
     });
 
+    #Comment
+    Route::prefix('comment')->group(function (){
+        Route::get('/', [CommentController::class, 'index'])->name('admin_comment');
+        Route::post('update/{id}', [CommentController::class, 'update'])->name('admin_comment_update');
+        Route::get('delete/{id}', [CommentController::class, 'delete'])->name('admin_comment_delete');
+        Route::get('show/{id}', [CommentController::class, 'show'])->name('admin_comment_show');
+    });
+
     #Services
     Route::prefix('service')->group(function (){
         Route::get('/', [ServiceController::class, 'index'])->name('admin_service');
@@ -101,6 +110,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 Route::middleware('auth')->prefix('account')->namespace('account')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('profile');
+    Route::get('comment', [UserController::class, 'comment'])->name('comment');
+    Route::get('delete/{id}', [UserController::class, 'comment_delete'])->name('comment_delete');
 });
 
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
@@ -112,8 +123,7 @@ Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login'
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
 
-/*
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-*/

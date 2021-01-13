@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Content;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,6 +16,22 @@ class UserController extends Controller
     public function index(){
         $setting = Setting::first();
         return view('home.account_profile', ['setting'=>$setting]);
+    }
+
+    public function comment(){
+        $setting = Setting::first();
+        $commentlist = Comment::where('user_id','=',Auth::user()->id)->get();
+
+        return view('home.user_comment', ['commentlist' => $commentlist, 'setting'=>$setting]);
+    }
+
+    public function comment_delete(Comment $comment, $id){
+        $comment = Comment::find($id);
+        $comment->delete();
+        $max = DB::table('comments')->max('id') + 1;
+        DB::statement("ALTER TABLE comments AUTO_INCREMENT =  $max");
+
+        return redirect()->back()->with('success','Comment deleted.');
     }
 
     /**

@@ -69,8 +69,8 @@
                                     <a href="{{ route('content', ['id'=>$rs->id, 'slug'=>$rs->slug]) }}">{{ $rs->title }}</a>
                                 </h4>
                                 <ul class="post-bar">
-                                    <li><img src="{{ asset('assets')}}/images/testi_02.png" alt=""><a href="#">Williamson</a></li>
-                                    <li><i class="fa fa-calendar"></i>02 June 2018</li>
+                                    <li ><img src="{{ $rs->user->profile_photo_url }}" alt=""><span style="margin-left: 5px;">{{ $rs->user->name }}</span></li>
+                                    <li><i class="fa fa-calendar"></i>{{ $rs->created_at->format('Y-m-d') }}</li>
                                 </ul>
                             </div>
                             <div class="pic">

@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title', 'User Profile')
+@section('title', 'My Account')
 @section('description', $setting->description)
 @section('keywords', $setting->keywords)
 

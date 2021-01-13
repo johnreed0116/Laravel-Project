@@ -73,14 +73,13 @@
                 <div class="news-box">
                     <h5 class="headin5_amrc col_white_amrc pt2">Newsletter</h5>
                     <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-                    <form action="#">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="Search for..." type="text">
-                            <span class="input-group-btn">
-								  <button class="btn btn-secondary" type="button">Go!</button>
-								</span>
-                        </div>
-                    </form>
+                    <div class="input-group">
+                        <form action="{{ route('getcontent') }}" method="post">
+                            @csrf
+                            @livewire('search')
+                        </form>
+                        @livewireScripts
+                    </div>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
                     <img class="img-fluid rounded" src="{{ Storage::url($content->image) }}" alt="" />
                     <hr>
                     <!-- Date/Time -->
-                    <p>Posted on January 1, 2018 at 18:00 PM</p>
+                    <p>Posted on {{ $content->created_at }} by <span style="color: dodgerblue;">{{ $content->user->name }}</span></p>
                     <hr>
                     <!-- Post Content -->
                     <p class="lead">{{$content->description}}</p>
@@ -43,28 +43,23 @@
                     @endforeach
 
                     <hr>
-                    <div class="blog-right-side">
-                        <!-- Comments Form -->
-                        <div class="card my-4">
-                            <h5 class="card-header">Leave a Comment:</h5>
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Comment -->
+                    @livewire('comment', ['id' => $content->id])
+
+                    <div id="success">@include('home.message')</div>
+
+                    <br>
+                    @foreach($comment as $rs)
+                    <!-- Comment -->
                     <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="images/testi_01.png" alt="">
+                        <img style="height: 75px; width: 75px;" class="d-flex mr-3 rounded-circle" src="{{ \App\Models\User::where('id','=',$rs->user_id)->first()->profile_photo_url }}" alt="">
                         <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            <h5 class="mt-0"></h5>
+                            <p>Commented on {{ $rs->created_at }} by <span style="color: dodgerblue;">{{ $rs->user->name }}</span></p>
+                            {{ $rs->comment }}
+                            <hr>
                         </div>
                     </div>
+                    @endforeach
                 </div>
 
                 <!-- Sidebar Widgets Column -->
@@ -83,14 +78,7 @@
                         </div>
                     </div>
 
-                    <div class="card my-4">
-                        <h5 class="card-header">Menu</h5>
-                        <div class="card-body">
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-bullhorn"></i><b>Announcements</b></a>
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-calendar-alt"></i><b>Events</b></a>
-                            <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-newspaper"></i><b>News</b></a>
-                        </div>
-                    </div>
+                    @include('home.blogmenu')
                 </div>
 
             </div>

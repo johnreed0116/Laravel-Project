@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Content;
 use App\Models\Image;
 use App\Models\Menu;
@@ -29,7 +30,7 @@ class HomeController extends Controller
         $setting = Setting::first();
         $slider = Content::select('id','title','description','image','slug')->limit(3)->get();
         $service = Service::select('id','title','description','image')->limit(6)->get();
-        $content = Content::select('id','title','description','image','type','slug')->limit(6)->get();
+        $content = Content::limit(6)->get();
 
         $data = [
             'setting'=>$setting,
@@ -37,15 +38,15 @@ class HomeController extends Controller
             'service'=>$service,
             'content'=>$content
         ];
-
         return view('home.index', $data);
     }
 
     public function content($id, $slug){
         $content = Content::find($id);
         $imagelist = Image::where('content_id',$id)->get();
+        $comment = Comment::where('content_id',$id)->get();
 
-        return view('home.content_detail', ['content' => $content, 'imagelist' => $imagelist]);
+        return view('home.content_detail', ['content' => $content, 'imagelist' => $imagelist, 'comment' => $comment]);
     }
 
     public function menucontent($id, $slug){
@@ -73,9 +74,9 @@ class HomeController extends Controller
 
     public function blog(){
         $menu = Menu::where('slug', 'blog')->first();
-        $contentlist = Content::all();
+        $content = Content::all();
 
-        return view('home.blog', ['menu' => $menu, 'contentlist' => $contentlist]);
+        return view('home.blog', ['menu' => $menu, 'content' => $content]);
     }
 
     public function aboutus(){
