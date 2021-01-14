@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="header-mobile-inner">
                     <a class="logo" href="index.html">
-                        <img src="{{ asset('assets')}}/admin/images/icon/logo.png" alt="CoolAdmin" />
+                        <a style="color: cornflowerblue; font-size: 15pt;" href="{{ route('admin_home') }}"><i style="margin-right: 10px;" class="fas fa-shield-alt"></i> Admin Panel </a>
                     </a>
                     <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -17,42 +17,7 @@
         <nav class="navbar-mobile">
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
-                    <li>
-                        <a class="js-arrow" href="{{ route('home') }}">
-                            <i class="fas fa-home"></i>Home</a>
-                    </li>
-                    <li class="active">
-                        <a class="js-arrow" href="{{ route('admin_home') }}">
-                            <i class="fas fa-chart-line"></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_menu') }}">
-                            <i class="fas fa-table"></i>Menus</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_content') }}">
-                            <i class="fas fa-chart-bar"></i>Contents</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_comment') }}">
-                            <i class="fas fa-comments"></i>Comments</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_service') }}">
-                            <i class="fas fa-pencil-alt"></i>Services</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_faq') }}">
-                            <i class="fas fa-question-circle"></i>FAQ</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_message') }}">
-                            <i class="fas fa-envelope"></i>Messages</a>
-                    </li>
-                    <li>
-                        <a class="js-arrow" href="{{ route('admin_setting') }}">
-                            <i class="fas fa-wrench"></i>Settings</a>
-                    </li>
+                @include('admin.adminmenu')
                 </ul>
             </div>
         </nav>

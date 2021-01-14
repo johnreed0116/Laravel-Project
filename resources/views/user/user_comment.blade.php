@@ -14,10 +14,7 @@
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('profile') }}">My Account</a>
+                        <a href="{{ route('user_profile') }}">My Profile</a>
                     </li>
                     <li class="breadcrumb-item active">My Comments</li>
                 </ol>
@@ -53,7 +50,7 @@
                                     <td>{{ $rs->created_at }}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <a href="{{ route('comment_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this comment! Are you sure?')">
+                                            <a href="{{ route('user_comment_delete', ['id'=>$rs->id]) }}" onclick="return confirm('You are deleting this comment! Are you sure?')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </div>
@@ -69,7 +66,18 @@
                     </div>
                     <!-- END DATA TABLE -->
                 </div>
-                @include('home.accountmenu')
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-4 blog-right-side">
+
+                    <!-- Side Widget -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Menu</h5>
+                        <div class="card-body">
+                            @include('user.usermenu')
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
         <!-- /.container -->

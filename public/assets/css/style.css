@@ -18,6 +18,26 @@ body {
   }
 }
 
+.hover-item{
+    color: white;
+}
+
+.hover-item:hover{
+    color: cornflowerblue;
+}
+
+.hover-item-dark{
+    color: #161616;
+}
+
+.hover-item-dark:hover{
+    color: cornflowerblue;
+}
+
+.hover-item-dark:active{
+    color: white;
+}
+
 a.btn-primary{
 	background-color: #1273eb;
 	border-color: #1273eb;

@@ -30,13 +30,11 @@ class HomeController extends Controller
     public function index(){
         $setting = Setting::first();
         $slider = Content::select('id','title','description','image','slug')->limit(3)->get();
-        $service = Service::select('id','title','description','image')->limit(6)->get();
         $content = Content::limit(6)->get();
 
         $data = [
             'setting'=>$setting,
             'slider'=>$slider,
-            'service'=>$service,
             'content'=>$content
         ];
         return view('home.index', $data);
@@ -71,20 +69,6 @@ class HomeController extends Controller
         $faqlist = Faq::all()->sortBy('position');
 
         return view('home.faq', ['setting'=>$setting, 'faqlist' => $faqlist]);
-    }
-
-    public function services(){
-        $setting = Setting::first();
-        $servicelist = Service::all();
-
-        return view('home.services', ['setting'=>$setting, 'servicelist' => $servicelist]);
-    }
-
-    public function blog(){
-        $menu = Menu::where('slug', 'blog')->first();
-        $content = Content::all();
-
-        return view('home.blog', ['menu' => $menu, 'content' => $content]);
     }
 
     public function aboutus(){

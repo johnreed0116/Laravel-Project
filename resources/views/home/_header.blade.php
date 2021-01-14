@@ -1,7 +1,5 @@
 @php
-  $parentMenus = \App\Http\Controllers\HomeController::menuList();
   $setting = \App\Http\Controllers\HomeController::getSetting();
-  error_reporting(0);
 @endphp
 
 <!-- Navigation -->
@@ -42,52 +40,44 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
 
-                    @foreach($parentMenus->sortBy('id') as $rs)
-
-                        @if(count($rs->children)==0)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route($rs->slug) }}">{{$rs->title}}</a>
-                            </li>
-                        @endif
-
-                        @if(count($rs->children)!=0)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{$rs->title}} <i class="fas fa-sort-down"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                    @if(count($rs->children))
-                                        @include('home.menutree',['children'=> $rs->children])
-                                    @endif
-                                </div>
-                            </li>
-                        @endif
-
-                    @endforeach
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('aboutus') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('references') }}">References</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
+                    </li>
 
                     <li class="nav-item">
-                        @auth
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b> {{ Auth::user()->name }} </b><i class="fas fa-sort-down"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                    <a class="dropdown-item" href="{{ route('profile') }}"><i style="margin-right: 20px;" class="fas fa-user-cog"></i><b>My Account</b></a>
-                                    <a class="dropdown-item" href=""><i style="margin-right: 20px;" class="fas fa-clone"></i><b>My Contents</b></a>
-                                    <a class="dropdown-item" href="{{ route('comment') }}"><i style="margin-right: 20px;" class="fas fa-comments"></i><b>My Comments</b></a>
-                                    <form method="POST" action="{{ route('logout') }}">@csrf<button style="cursor:pointer; outline:none;" class="dropdown-item" href="" type="submit"><i style="margin-right: 20px;" class="fas fa-user-times"></i><b>Logout</b></button></form>
-                                </div>
-                            </li>
-                        @endauth
-                        @guest
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="margin-right: 20px;" class="fas fa-user"></i><b> Login / Join </b><i class="fas fa-sort-down"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                    <a class="dropdown-item" href="{{ route('login') }}"><i style="margin-right: 20px;" class="fas fa-user-lock"></i><b>Login</b></a>
-                                    <a class="dropdown-item" href="{{ route('register') }}"><i style="margin-right: 20px;" class="fas fa-user-plus"></i><b>Register</b></a>
-                                </div>
-                            </li>
-                        @endguest
-                    </li>
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b> {{ Auth::user()->name }} </b><i class="fas fa-sort-down"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                @include('user.usermenu')
+                            </div>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="margin-left: 10px;" class="fas fa-user"></i><b> Login / Join </b><i class="fas fa-sort-down"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                <a class="dropdown-item" href="{{ route('login') }}"><i style="margin-right: 20px;" class="fas fa-user-lock"></i><b>Login</b></a>
+                                <a class="dropdown-item" href="{{ route('register') }}"><i style="margin-right: 20px;" class="fas fa-user-plus"></i><b>Register</b></a>
+                            </div>
+                        </li>
+                    @endguest
 
                 </ul>
             </div>
         </div>
     </nav>
+
 </header>

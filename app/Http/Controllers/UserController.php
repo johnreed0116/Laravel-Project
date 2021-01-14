@@ -15,14 +15,14 @@ class UserController extends Controller
 
     public function index(){
         $setting = Setting::first();
-        return view('home.account_profile', ['setting'=>$setting]);
+        return view('user.user_profile', ['setting'=>$setting]);
     }
 
     public function comment(){
         $setting = Setting::first();
         $commentlist = Comment::where('user_id','=',Auth::user()->id)->get();
 
-        return view('home.user_comment', ['commentlist' => $commentlist, 'setting'=>$setting]);
+        return view('user.user_comment', ['commentlist' => $commentlist, 'setting'=>$setting]);
     }
 
     public function comment_delete(Comment $comment, $id){

@@ -14,10 +14,7 @@
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('blog') }}">Blog</a>
+                        <a href="{{ route('menucontent', ['id'=>$content->menu_id, 'slug'=>\App\Models\Menu::where('id','=',$content->menu_id)->first()->slug]) }} ">{{ \App\Models\Menu::where('id','=',$content->menu_id)->first()->title }}</a>
                     </li>
                     <li class="breadcrumb-item active">{{ $content->title }}</li>
                 </ol>
@@ -28,8 +25,8 @@
     <div class="blog-main">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 blog-entries">
-                    <img class="img-fluid rounded" src="{{ Storage::url($content->image) }}" alt="" />
+                <div class="col-md-16 blog-entries">
+                    <img style="width: 100%;" class="img-fluid rounded" src="{{ Storage::url($content->image) }}" alt="" />
                     <hr>
                     <!-- Date/Time -->
                     <p>Posted on {{ $content->created_at }} by <span style="color: dodgerblue;">{{ $content->user->name }}</span></p>
@@ -39,7 +36,7 @@
                     <p>{!! $content->detail !!}</p>
 
                     @foreach($imagelist as $rs)
-                        <img style="margin-bottom: 20px;" class="img-fluid rounded" src="{{ Storage::url($rs->image) }}" alt="" />
+                        <img style="margin-bottom: 20px; width: 100%;" class="img-fluid rounded" src="{{ Storage::url($rs->image) }}" alt="" />
                     @endforeach
 
                     <hr>
@@ -60,25 +57,6 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
-
-                <!-- Sidebar Widgets Column -->
-                <div class="col-md-4 blog-right-side">
-
-                    <div class="card mb-4">
-                        <h5 class="card-header">Search</h5>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <form action="{{ route('getcontent') }}" method="post">
-                                    @csrf
-                                    @livewire('search')
-                                </form>
-                                @livewireScripts
-                            </div>
-                        </div>
-                    </div>
-
-                    @include('home.blogmenu')
                 </div>
 
             </div>

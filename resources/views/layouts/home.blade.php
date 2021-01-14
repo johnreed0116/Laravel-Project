@@ -17,10 +17,14 @@
     <link href="{{ asset('assets')}}/css/jquery.fancybox.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets')}}/css/style.css" rel="stylesheet">
+
+    @yield('javascript')
 </head>
 <body>
 <div class="wrapper-main">
     @include('home._header')
+
+    @include('home._menu')
 
     @yield('content')
 

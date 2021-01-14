@@ -32,28 +32,6 @@
         </div>
     </div>
 
-    <div class="services-bar">
-        <div class="container">
-            <h1 style="text-align: center;" class="py-4">Our Best Services</h1>
-            <!-- Services Section -->
-            <div class="row">
-                @foreach($service as $rs)
-                    <div class="col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-img">
-                                <img class="img-fluid" src="{{ Storage::url($rs->image) }}" alt="" />
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-header"> {{ $rs->title }} </h4>
-                                <p class="card-text"> {{ $rs->description }} </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
     <div class="blog-slide">
         <div class="container">
             <br>
@@ -76,7 +54,6 @@
                             <div class="pic">
                                 <img src="{{ Storage::url($rs->image) }}" alt="">
                                 <ul class="post-category">
-                                    <li><a href="{{ route('blog') }}">Blog</a></li>
                                     <li><a href="">{{ $rs->type }}</a></li>
                                 </ul>
                             </div>

@@ -42,9 +42,9 @@
                                             <label class="control-label mb-1">Type</label>
                                             <select name="type" id="select" class="form-control">
                                                 <option selected="selected">{{ $content->type }}</option>
-                                                <option value="announcement">Announcement</option>
-                                                <option value="event">Event</option>
-                                                <option value="news">News</option>
+                                                <option value="Menu">Menu</option>
+                                                <option value="Announcement">Announcement</option>
+                                                <option value="News">News</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

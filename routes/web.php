@@ -31,8 +31,6 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
-Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
@@ -107,27 +105,34 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [FaqController::class, 'show'])->name('admin_faq_show');
     });
 
-    #Services
-    Route::prefix('service')->group(function (){
-        Route::get('/', [ServiceController::class, 'index'])->name('admin_service');
-        Route::get('add', [ServiceController::class, 'add'])->name('admin_service_add');
-        Route::post('store', [ServiceController::class, 'store'])->name('admin_service_store');
-        Route::get('edit/{id}', [ServiceController::class, 'edit'])->name('admin_service_edit');
-        Route::post('update/{id}', [ServiceController::class, 'update'])->name('admin_service_update');
-        Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('admin_service_delete');
-        Route::get('show', [ServiceController::class, 'show'])->name('admin_service_show');
-    });
-
-});
-
-Route::middleware('auth')->prefix('account')->namespace('account')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('profile');
-    Route::get('comment', [UserController::class, 'comment'])->name('comment');
-    Route::get('delete/{id}', [UserController::class, 'comment_delete'])->name('comment_delete');
 });
 
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
-    Route::get('/profile', [UserController::class, 'index'])->name('userprofile');
+    Route::get('/profile', [UserController::class, 'index'])->name('user_profile');
+
+    #Comment
+    Route::get('comment', [UserController::class, 'comment'])->name('user_comment');
+    Route::get('delete/{id}', [UserController::class, 'comment_delete'])->name('user_comment_delete');
+
+    #Content
+    Route::prefix('content')->group(function (){
+        Route::get('/', [\App\Http\Controllers\ContentController::class, 'index'])->name('user_content');
+        Route::get('add', [\App\Http\Controllers\ContentController::class, 'add'])->name('user_content_add');
+        Route::post('store', [\App\Http\Controllers\ContentController::class, 'store'])->name('user_content_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\ContentController::class, 'edit'])->name('user_content_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\ContentController::class, 'update'])->name('user_content_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\ContentController::class, 'delete'])->name('user_content_delete');
+        Route::get('show', [\App\Http\Controllers\ContentController::class, 'show'])->name('user_content_show');
+    });
+
+    #Image
+    Route::prefix('image')->group(function (){
+        Route::get('add/{content_id}', [\App\Http\Controllers\ImageController::class, 'add'])->name('user_image_add');
+        Route::post('store/{content_id}', [\App\Http\Controllers\ImageController::class, 'store'])->name('user_image_store');
+        Route::get('delete/{id}/{content_id}', [\App\Http\Controllers\ImageController::class, 'delete'])->name('user_image_delete');
+        Route::get('show', [\App\Http\Controllers\ImageController::class, 'show'])->name('user_image_show');
+    });
+
 });
 
 //Route::get('/admin', [HomeController::class, 'index'])->name('admin')->middleware('auth');

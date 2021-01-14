@@ -14,10 +14,11 @@
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('blog') }}">Blog</a>
+                        @if(\App\Models\Menu::where('id','=',$menu->parent_id)->first() != null)
+                            <a href="{{ route('menucontent', ['id'=>$menu->parent_id, 'slug'=>\App\Models\Menu::where('id','=',$menu->parent_id)->first()->slug]) }} ">{{ \App\Models\Menu::where('id','=',$menu->parent_id)->first()->title }}</a>
+                        @else
+                            <a href="{{ route('home') }} ">Home</a>
+                        @endif
                     </li>
                     <li class="breadcrumb-item active">{{ $menu->title }}</li>
                 </ol>
@@ -65,7 +66,6 @@
                         </div>
                     </div>
 
-                    @include('home.blogmenu')
                 </div>
 
             </div>

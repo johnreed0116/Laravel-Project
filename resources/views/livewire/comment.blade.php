@@ -13,7 +13,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 @endauth
                 @guest
-                    <button type="submit" class="btn btn-primary"><a style="text-decoration: none; color: white;" href="{{ route('login') }}">For Submit your Comment, Please Login</a></button>
+                    <button type="button" class="btn btn-primary" disabled><a style="text-decoration: none; color: white;" href="{{ route('login') }}">For Submit your Comment, Please Login</a></button>
                 @endguest
             </form>
         </div>
