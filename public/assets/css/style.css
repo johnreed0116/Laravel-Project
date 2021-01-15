@@ -24,6 +24,12 @@ body {
 
 .hover-item:hover{
     color: cornflowerblue;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .hover-item-dark{
@@ -32,6 +38,12 @@ body {
 
 .hover-item-dark:hover{
     color: cornflowerblue;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .hover-item-dark:active{

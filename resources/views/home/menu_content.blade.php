@@ -15,7 +15,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         @if(\App\Models\Menu::where('id','=',$menu->parent_id)->first() != null)
-                            <a href="{{ route('menucontent', ['id'=>$menu->parent_id, 'slug'=>\App\Models\Menu::where('id','=',$menu->parent_id)->first()->slug]) }} ">{{ \App\Models\Menu::where('id','=',$menu->parent_id)->first()->title }}</a>
+                            <span style="color: white;">{{ \App\Models\Menu::where('id','=',$menu->parent_id)->first()->title }}</span>
                         @else
                             <a href="{{ route('home') }} ">Home</a>
                         @endif

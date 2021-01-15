@@ -20,7 +20,7 @@ class HomeController extends Controller
 {
 
     public static function menuList(){
-        return Menu::where('parent_id','=',0)->with('children')->get();
+        return Menu::where('parent_id','=',0)->with('children')->where('status','=','True')->get();
     }
 
     public static function getSetting(){
@@ -41,16 +41,16 @@ class HomeController extends Controller
     }
 
     public function content($id, $slug){
-        $content = Content::find($id);
+        $content = Content::where('status','=','True')->find($id);
         $imagelist = Image::where('content_id',$id)->get();
-        $comment = Comment::where('content_id',$id)->get();
+        $comment = Comment::where('content_id',$id)->where('status','=','True')->get();
 
         return view('home.content_detail', ['content' => $content, 'imagelist' => $imagelist, 'comment' => $comment]);
     }
 
     public function menucontent($id, $slug){
-        $menucontent = Content::where('menu_id', $id)->get();
-        $menu = Menu::find($id);
+        $menucontent = Content::where('menu_id', $id)->where('status','=','True')->get();
+        $menu = Menu::where('status','=','True')->find($id);
 
         return view('home.menu_content', ['menucontent'=>$menucontent, 'menu' => $menu]);
     }
@@ -66,7 +66,7 @@ class HomeController extends Controller
 
     public function faq(){
         $setting = Setting::first();
-        $faqlist = Faq::all()->sortBy('position');
+        $faqlist = Faq::all()->where('status','=','True')->sortBy('position');
 
         return view('home.faq', ['setting'=>$setting, 'faqlist' => $faqlist]);
     }

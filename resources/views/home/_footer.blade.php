@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                <p>We at Berke IT Systems cater for all types and sizes of businesses and can provide your company with the business solution you need. So for a reliable, on time and excellent service, please contact us.</p>
             </div>
             <div class="col-md-4">
                 <a class="btn btn-lg btn-secondary btn-block" href="{{ route('contact') }}"> Contact Us </a>
@@ -40,13 +40,12 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
                 <!--headin5_amrc-->
-                <ul class="footer_ul_amrc">
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Default Version</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Boxed Version</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Team </a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>About Us</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Services</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Get In Touch</a></li>
+                <ul class="footer_ul_amrc"2>
+                    <li><a href="{{ route('home') }}"><i class="fas fa-long-arrow-alt-right"></i>Home Page</a></li>
+                    <li><a href="{{ route('aboutus') }}"><i class="fas fa-long-arrow-alt-right"></i>About Us</a></li>
+                    <li><a href="{{ route('references') }}"><i class="fas fa-long-arrow-alt-right"></i>Our References </a></li>
+                    <li><a href="{{ route('contact') }}"><i class="fas fa-long-arrow-alt-right"></i>Get In Touch</a></li>
+                    <li><a href="{{ route('faq') }}"><i class="fas fa-long-arrow-alt-right"></i>Frequently Asked Questions</a></li>
                 </ul>
                 <!--footer_ul_amrc ends here-->
             </div>
@@ -54,25 +53,27 @@
                 <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
                 <!--headin5_amrc ends here-->
                 <ul class="footer_ul2_amrc">
+                    @if($setting->twitter != null)
                     <li>
-                        <a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-                        <p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+                        <a href="{{ $setting->twitter }}"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>So many of us began #WFH for the first time last year. Hear from various CIOs...</p>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-                        <p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+                        <a href="{{ $setting->twitter }}"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>#RTO is fast approaching if it hasn't happened for ...</p>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-                        <p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+                        <a href="{{ $setting->twitter }}"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>What is Ethical AI and why is it an important issue? See how ...</p>
                     </li>
+                    @endif
                 </ul>
                 <!--footer_ul2_amrc ends here-->
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 ">
                 <div class="news-box">
                     <h5 class="headin5_amrc col_white_amrc pt2">Newsletter</h5>
-                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+                    <p>Read our news, press releases, insights on changing regulations and other technical topics.</p>
                     <div class="input-group">
                         <form action="{{ route('getcontent') }}" method="post">
                             @csrf

@@ -33,7 +33,11 @@
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
                                         <td>
+                                            @if($rs->parent_id == 0)
+                                            Main Menu
+                                            @else
                                             {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title) }}
+                                            @endif
                                         </td>
                                         <td>{{ $rs->title }}</td>
                                         <td>

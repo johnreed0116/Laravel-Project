@@ -68,11 +68,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Phone</label>
-                                                    <input name="phone" type="number" class="form-control" value="{{ $setting->phone }}" data-val="true">
+                                                    <input name="phone" type="text" class="form-control" value="{{ $setting->phone }}" data-val="true">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Fax</label>
-                                                    <input name="fax" type="number" class="form-control" value="{{ $setting->fax }}" data-val="true">
+                                                    <input name="fax" type="text" class="form-control" value="{{ $setting->fax }}" data-val="true">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label mb-1">Email</label>

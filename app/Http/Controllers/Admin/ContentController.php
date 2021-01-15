@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Content;
+use App\Models\Image;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -132,6 +134,16 @@ class ContentController extends Controller
         $content->delete();
         $maxId = DB::table('contents')->max('id') + 1;
         DB::statement("ALTER TABLE contents AUTO_INCREMENT =  $maxId");
+
+        $comment = Comment::where('content_id','=',$id);
+        $comment->delete();
+        $maxId1 = DB::table('comments')->max('id') + 1;
+        DB::statement("ALTER TABLE comments AUTO_INCREMENT =  $maxId1");
+
+        $image = Image::where('content_id','=',$id);
+        $image->delete();
+        $maxId2 = DB::table('images')->max('id') + 1;
+        DB::statement("ALTER TABLE images AUTO_INCREMENT =  $maxId2");
 
         return redirect()->route('admin_content');
     }

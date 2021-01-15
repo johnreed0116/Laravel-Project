@@ -29,8 +29,11 @@
                 <div class="col-lg-8">
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-plus-square"></i><a style="text-decoration:none; color:white; margin-left: 10px;" href="{{ route('user_content_add') }}">Add Content</a></button>
+                            <a style="text-decoration:none; color:white;" href="{{ route('user_content_add') }}">
+                                <button class="btn btn-primary">
+                                    <i style="margin-right: 10px;" class="fas fa-plus-square"></i> Add Content
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <br>
