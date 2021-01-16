@@ -14,7 +14,11 @@
             <div class="breadcrumb-main">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('menucontent', ['id'=>$content->menu_id, 'slug'=>\App\Models\Menu::where('id','=',$content->menu_id)->first()->slug]) }} ">{{ \App\Models\Menu::where('id','=',$content->menu_id)->first()->title }}</a>
+                        @if($content->menu_id != '0')
+                            <a href="{{ route('menucontent', ['id'=>$content->menu_id, 'slug'=>\App\Models\Menu::where('id','=',$content->menu_id)->first()->slug]) }} ">{{ \App\Models\Menu::where('id','=',$content->menu_id)->first()->title }}</a>
+                        @else
+                            <a href="{{ route('home') }}">Home</a>
+                        @endif
                     </li>
                     <li class="breadcrumb-item active">{{ $content->title }}</li>
                 </ol>

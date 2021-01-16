@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row" style="width: 115%;">
                 <!-- Post Content Column -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <a style="text-decoration:none; color:white;" href="{{ route('user_content_add') }}">
@@ -56,9 +56,13 @@
                                 <tr class="tr-shadow">
                                     <td>{{ $rs->id }}</td>
                                     <td>
-                                        {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu, $rs->menu->title) }}
+                                        @if($rs->menu_id != '0')
+                                            {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu, $rs->menu->title) }}
+                                        @else
+                                            Home Page
+                                        @endif
                                     </td>
-                                    <td>{{ $rs->title }}</td>
+                                    <td><a style="text-decoration: none;" href="{{ route('content', ['id'=>$rs->id, 'slug'=>$rs->slug]) }}">{{ $rs->title }}</a></td>
                                     <td>{{ $rs->type }}</td>
                                     <td>
                                         @if ($rs->image)
@@ -91,7 +95,7 @@
                     <!-- END DATA TABLE -->
                 </div>
                 <!-- Sidebar Widgets Column -->
-                <div class="col-md-4 blog-right-side">
+                <div class="col-md-3 blog-right-side">
                     <!-- Side Widget -->
                     <div class="card my-4">
                         <h5 class="card-header">Menu</h5>
@@ -99,7 +103,6 @@
                             @include('user.usermenu')
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

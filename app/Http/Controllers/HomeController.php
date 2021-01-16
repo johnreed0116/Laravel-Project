@@ -30,12 +30,14 @@ class HomeController extends Controller
     public function index(){
         $setting = Setting::first();
         $slider = Content::select('id','title','description','image','slug')->limit(3)->get();
-        $content = Content::limit(6)->get();
+        $announcement = Content::where('type','=','Announcement')->where('status','=','True')->get();
+        $news = Content::where('type','=','News')->where('status','=','True')->get();
 
         $data = [
             'setting'=>$setting,
             'slider'=>$slider,
-            'content'=>$content
+            'announcement'=>$announcement,
+            'news'=>$news
         ];
         return view('home.index', $data);
     }

@@ -33,6 +33,8 @@
                                                    aria-selected="true">Smtp</a>
                                                 <a class="nav-item nav-link" id="nav-social-tab" data-toggle="tab" href="#nav-social" role="tab" aria-controls="nav-social"
                                                    aria-selected="true">Social Media</a>
+                                                <a class="nav-item nav-link" id="nav-homepage-tab" data-toggle="tab" href="#nav-homepage" role="tab" aria-controls="nav-homepage"
+                                                   aria-selected="true">Home Page</a>
                                                 <a class="nav-item nav-link" id="nav-aboutus-tab" data-toggle="tab" href="#nav-aboutus" role="tab" aria-controls="nav-aboutus"
                                                    aria-selected="true">About Us</a>
                                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact"
@@ -121,6 +123,13 @@
                                                     <input name="twitter" type="text" class="form-control" value="{{ $setting->twitter }}" data-val="true">
                                                 </div>
                                             </div>
+                                            <div class="tab-pane fade show" id="nav-homepage" role="tabpanel" aria-labelledby="nav-aboutus-tab">
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label mb-1">Home Page</label>
+                                                    <textarea name="homepage" id="homepage">{{ $setting->homepage }}</textarea>
+                                                </div>
+                                            </div>
                                             <div class="tab-pane fade show" id="nav-aboutus" role="tabpanel" aria-labelledby="nav-aboutus-tab">
                                                 <br>
                                                 <div class="form-group">
@@ -150,6 +159,20 @@
                                         </button>
                                     </div>
                                     <script>
+                                        $('#homepage').summernote({
+                                            tabsize: 2,
+                                            height: 100,
+                                            toolbar: [
+                                                ['style', ['style']],
+                                                ['font', ['bold', 'underline', 'clear']],
+                                                ['color', ['color']],
+                                                ['para', ['ul', 'ol', 'paragraph']],
+                                                ['table', ['table']],
+                                                ['insert', ['link', 'picture', 'video']],
+                                                ['view', ['fullscreen', 'codeview', 'help']]
+                                            ],
+                                            dialogsInBody: true
+                                        });
                                         $('#aboutus').summernote({
                                             tabsize: 2,
                                             height: 100,

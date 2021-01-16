@@ -62,6 +62,9 @@ class ContentController extends Controller
         $content->user_id = Auth::id();
         $content->title = $request->input('title');
         $content->type = $request->input('type');
+        if($content->type == 'Announcement' or $content->type == 'News'){
+            $content->menu_id = 0;
+        }
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
@@ -112,6 +115,9 @@ class ContentController extends Controller
         $content->user_id = Auth::id();
         $content->title = $request->input('title');
         $content->type = $request->input('type');
+        if($content->type == 'Announcement' or $content->type == 'News'){
+            $content->menu_id = 0;
+        }
         $content->keywords = $request->input('keywords');
         $content->description = $request->input('description');
         $content->detail = $request->input('detail');
