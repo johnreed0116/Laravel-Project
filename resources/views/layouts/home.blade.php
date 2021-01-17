@@ -18,7 +18,9 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets')}}/css/style.css" rel="stylesheet">
 
+    @yield('css')
     @yield('javascript')
+
 </head>
 <body>
 <div class="wrapper-main">

@@ -4,6 +4,26 @@
 @section('description', $content->description)
 @section('keywords', $content->keywords)
 
+@section('css')
+
+    <style>
+
+        @media only screen and (max-width: 1200px) {
+            .imgslider{
+                max-height: 400px;
+            }
+        }
+
+        @media only screen and (min-width: 1200px) {
+            .imgslider{
+                max-height: 600px;
+            }
+        }
+
+    </style>
+
+@endsection
+
 @section('content')
 
     <!-- full Title -->
@@ -30,7 +50,53 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-16 blog-entries">
-                    <img style="width: 100%;" class="img-fluid rounded" src="{{ Storage::url($content->image) }}" alt="" />
+
+                    <div id="Indicators" class="imgslider carousel slide" data-ride="carousel">
+
+                        @if($imagelist->count() != 0)
+                        <ul class="carousel-indicators">
+                            <li data-target="#Indicators" data-slide-to="0" class="active"></li>
+                            @php
+                              $count = 0;
+                            @endphp
+                            @while($count < $imagelist->count())
+                                <li data-target="#Indicators" data-slide-to="$count"></li>
+                                @php $count++ @endphp
+                            @endwhile
+                        </ul>
+                        @endif
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <img style="min-width: 100%; height: 100%;" class="imgslider d-block w-100" src="{{ Storage::url($content->first()->image) }}" alt="" />
+                            </div>
+
+                            @if($imagelist->count() != 0)
+                                @foreach($imagelist as $rs)
+                                <div class="carousel-item">
+                                    <img style="min-width: 100%; height: 100%;" class="imgslider d-block w-100" src="{{ Storage::url($rs->image) }}" alt="" />
+                                </div>
+                                @endforeach
+                            @endif
+
+                        </div>
+                        @if($imagelist->count() != 0)
+                            <a class="carousel-control-prev" href="#Indicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#Indicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        @endif
+                    </div>
+
+                    <script type="javascript">
+                        $('.carousel').carousel()
+                    </script>
+
                     <hr>
                     <!-- Date/Time -->
                     <p>Posted on {{ $content->created_at }} by <span style="color: dodgerblue;">{{ $content->user->name }}</span></p>
@@ -38,10 +104,6 @@
                     <!-- Post Content -->
                     <p class="lead">{{$content->description}}</p>
                     <p>{!! $content->detail !!}</p>
-
-                    @foreach($imagelist as $rs)
-                        <img style="margin-bottom: 20px; width: 100%;" class="img-fluid rounded" src="{{ Storage::url($rs->image) }}" alt="" />
-                    @endforeach
 
                     <hr>
                     @livewire('comment', ['id' => $content->id])
