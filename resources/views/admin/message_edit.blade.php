@@ -47,28 +47,28 @@
                                 <h3 class="text-center title-2">Message</h3>
                             </div>
                             <hr>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Name</label>
+                                <input class="form-control" value="{{ $message->name }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">E-Mail</label>
+                                <input class="form-control" value="{{ $message->email }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Phone</label>
+                                <input class="form-control" value="{{ $message->phone }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Subject</label>
+                                <input class="form-control" value="{{ $message->subject }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Message</label>
+                                <input class="form-control" value="{{ $message->message }}" disabled>
+                            </div>
                             <form action="{{ route('admin_message_update', ['id' => $message->id]) }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Name</label>
-                                    <input name="name" type="text" class="form-control" value="{{ $message->name }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">E-Mail</label>
-                                    <input name="email" type="text" class="form-control" value="{{ $message->email }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Phone</label>
-                                    <input name="phone" type="text" class="form-control" value="{{ $message->phone }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Subject</label>
-                                    <input name="subject" type="text" class="form-control" value="{{ $message->subject }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Message</label>
-                                    <input name="message" type="text" class="form-control" value="{{ $message->message }}" data-val="true" disabled>
-                                </div>
                                 <div class="form-group">
                                     <label class="control-label mb-1">Admin Note</label>
                                     <textarea name="note" id="note">{{ $message->note }}</textarea>

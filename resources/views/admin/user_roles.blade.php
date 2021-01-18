@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Berke Kiran">
-    <title> Add Image </title>
+    <title> Add Roles To The User </title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('assets')}}/admin/css/font-face.css" rel="stylesheet" media="all">
@@ -31,68 +31,62 @@
 
 </head>
     <body style="background-color: #E5E5E5;">
-
         <!-- MAIN CONTENT-->
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h3 class="text-center title-2">Content : {{ $content->title }}</h3>
+                    <h3 class="text-center title-2">User Roles</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Id</label>
+                    <input class="form-control" value="{{ $user->id }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Name</label>
+                    <input class="form-control" value="{{ $user->name }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Email</label>
+                    <input class="form-control" value="{{ $user->email }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Roles</label>
+                    <table>
+                        <tr>
+                            @foreach($user->roles as $row)
+                                <td> {{ $row->name }} </td>
+                                <td>
+                                    <a href="{{ route('admin_user_role_delete', ['userid'=>$user->id, 'roleid'=>$row->id]) }}" onclick="return confirm('You are removing this role from the user! Are you sure?')">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Remove">
+                                            <i style="margin-right:15px; margin-left: 5px; font-size: 30px; color: indianred;" class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                                <td></td>
+                            @endforeach
+                        </tr>
+                    </table>
                 </div>
                 <hr>
-                <form action="{{ route('admin_image_store', ['content_id' => $content->id]) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin_user_role_add', ['id'=>$user->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label class="control-label mb-1">Title</label>
-                        <input name="title" type="text" class="form-control" value="" data-val="true">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label mb-1">Image</label>
-                        <input name="image" type="file" class="form-control" value="" data-val="true">
-                    </div>
-                    <div>
+                        <select class="form-control" name="roleid">
+                            @foreach($userlist as $rs)
+                                <option value="{{ $rs->id }}">{{ $rs->name }}</option>
+                            @endforeach
+                        </select>
+                        <br>
                         <button id="add-button" type="submit" class="btn btn-lg btn-info btn-block">
                             <i class="fa fa-lg"></i>&nbsp;
-                            <span>Add Image</span>
+                            <span>Add Role</span>
                         </button>
                     </div>
                 </form>
+                <hr>
             </div>
         </div>
-        <div class="table-responsive table-responsive-data2">
-            <table class="table table-data2">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($images as $rs)
-                <tr class="tr-shadow">
-                    <td>{{ $rs->id }}</td>
-                    <td>{{ $rs->title }}</td>
-                    <td>
-                        @if ($rs->image)
-                            <img src="{{ Storage::url($rs->image) }}" height="30" alt="" >
-                        @endif
-                    </td>
-                    </td>
-                    <td>
-                        <div class="table-data-feature">
-                            <a href="{{ route('admin_image_delete', ['id' => $rs->id, 'content_id' => $content->id]) }}" onclick="return confirm('You are deleting this image! Are you sure?')">
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                    <i class="zmdi zmdi-delete"></i>
-                                </button>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="spacer"></tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+
         <div style="margin-top: 10px; margin-left: 30px;">@include('home.message')</div>
         <div class="copyright">
             <p>© 2020 Berke Kiran</p>

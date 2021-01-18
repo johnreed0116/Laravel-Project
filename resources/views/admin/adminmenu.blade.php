@@ -27,6 +27,10 @@
     <a class="js-arrow" href="{{ route('admin_message') }}">
         <i class="fas fa-envelope"></i>Messages</a>
 </li>
+<li>
+    <a class="js-arrow" href="{{ route('admin_user') }}">
+        <i class="fas fa-users"></i>Users</a>
+</li>
 <hr>
 <li>
     <a class="js-arrow" href="{{ route('admin_setting') }}">

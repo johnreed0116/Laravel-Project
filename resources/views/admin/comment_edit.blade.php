@@ -43,28 +43,28 @@
                                 <h3 class="text-center title-2">Comment</h3>
                             </div>
                             <hr>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Content</label>
+                                <input class="form-control" value="{{ $comment->content->title }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">User</label>
+                                <input class="form-control" value="{{ $comment->user->name }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">IP</label>
+                                <input type="text" class="form-control" value="{{ $comment->IP }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Comment</label>
+                                <textarea class="form-control" disabled>{{ $comment->comment }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Date</label>
+                                <input class="form-control" value="{{ $comment->created_at }}" disabled>
+                            </div>
                             <form action="{{ route('admin_comment_update', ['id' => $comment->id]) }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Content</label>
-                                    <input name="content_id" type="text" class="form-control" value="{{ $comment->content->title }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">User</label>
-                                    <input name="user_id" type="text" class="form-control" value="{{ $comment->user->name }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">IP</label>
-                                    <input name="IP" type="text" class="form-control" value="{{ $comment->IP }}" data-val="true" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Comment</label>
-                                    <textarea name="comment" type="text" class="form-control" data-val="true" disabled>{{ $comment->comment }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label mb-1">Date</label>
-                                    <input name="created_at" type="text" class="form-control" value="{{ $comment->created_at }}" data-val="true" disabled>
-                                </div>
                                 <div class="form-group">
                                     <label class="control-label mb-1">Status</label>
                                     <select name="status" id="select" class="form-control">
@@ -73,7 +73,7 @@
                                         <option value="True">True</option>
                                     </select>
                                 </div>
-                                <div style="margin-bottom: 15px;" id="success">@include('home.message')</div>
+                                <div style="margin-bottom: 15px; margin-left: 30px;" id="success">@include('home.message')</div>
                                 <div>
                                     <button id="add-button" type="submit" class="btn btn-lg btn-info btn-block">
                                         <i class="fa fa-lg"></i>&nbsp;

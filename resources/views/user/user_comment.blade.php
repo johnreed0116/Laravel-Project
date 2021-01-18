@@ -61,7 +61,7 @@
                             </tbody>
                         </table>
 
-                        <div id="success">@include('home.message')</div>
+                        <div>@include('home.message')</div>
 
                     </div>
                     <!-- END DATA TABLE -->

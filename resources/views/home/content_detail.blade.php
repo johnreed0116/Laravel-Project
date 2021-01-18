@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-md-16 blog-entries">
 
-                    <div id="Indicators" class="imgslider carousel slide" data-ride="carousel">
+                    <div style="z-index: -1;" id="Indicators" class="imgslider carousel slide" data-ride="carousel">
 
                         @if($imagelist->count() != 0)
                         <ul class="carousel-indicators">
@@ -69,7 +69,7 @@
                         <div class="carousel-inner">
 
                             <div class="carousel-item active">
-                                <img style="min-width: 100%; height: 100%;" class="imgslider d-block w-100" src="{{ Storage::url($content->first()->image) }}" alt="" />
+                                <img style="min-width: 100%; height: 100%;" class="imgslider d-block w-100" src="{{ Storage::url($content->image) }}" alt="" />
                             </div>
 
                             @if($imagelist->count() != 0)
@@ -108,7 +108,7 @@
                     <hr>
                     @livewire('comment', ['id' => $content->id])
 
-                    <div id="success">@include('home.message')</div>
+                    <div>@include('home.message')</div>
 
                     <br>
                     @foreach($comment as $rs)
