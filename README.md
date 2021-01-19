@@ -2,7 +2,7 @@ Business Website Project
 ---------------------
 2020 / BLM441 Special Topics I in Computer Engineering Course Project
 
-##### Technologies used on this website:
+#### Technologies used on this website:
 - Php
 - Laravel
 - Jetstream
