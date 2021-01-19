@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Berke Kiran">
-    <title> Add Roles To The User </title>
+    <title> {{ $user->name }} </title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('assets')}}/admin/css/font-face.css" rel="stylesheet" media="all">
@@ -35,7 +35,13 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h3 class="text-center title-2">User Roles</h3>
+                    <h3 class="text-center title-2">User Detail</h3>
+                    <hr>
+                </div>
+                <div style="text-align: center;">
+                    @if ($user->profile_photo_path)
+                        <img src="{{ Storage::url($user->profile_photo_path) }}" height="150" alt="">
+                    @endif
                 </div>
                 <div class="form-group">
                     <label class="control-label mb-1">Id</label>
@@ -48,6 +54,18 @@
                 <div class="form-group">
                     <label class="control-label mb-1">Email</label>
                     <input class="form-control" value="{{ $user->email }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Phone</label>
+                    <input class="form-control" value="{{ $user->phone }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Address</label>
+                    <input class="form-control" value="{{ $user->address }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-1">Created At</label>
+                    <input class="form-control" value="{{ $user->created_at }}" disabled>
                 </div>
                 <div class="form-group">
                     <label class="control-label mb-1">Roles</label>

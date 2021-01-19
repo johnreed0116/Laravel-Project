@@ -29,16 +29,31 @@ class Comment extends Component
     public function store(){
 
         if($this->content_id != null) {
-            \App\Models\Comment::create([
-                'content_id' => $this->content_id,
-                'user_id' => Auth::id(),
-                'IP' => $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1',
-                'comment' => $this->comment
-            ]);
+
+            $userRoles = Auth::user()->roles->pluck('name');
+
+            if($userRoles->contains('admin')){
+                \App\Models\Comment::create([
+                    'content_id' => $this->content_id,
+                    'user_id' => Auth::id(),
+                    'IP' => $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1',
+                    'comment' => $this->comment,
+                    'status' => 'True'
+                ]);
+            } else {
+                \App\Models\Comment::create([
+                    'content_id' => $this->content_id,
+                    'user_id' => Auth::id(),
+                    'IP' => $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1',
+                    'comment' => $this->comment,
+                    'status' => 'False'
+                ]);
+            }
 
             session()->flash('success', 'Comment send successfully.');
 
             $this->resetInput();
+
         } else {
             session()->flash('fail','The comment didn\'t send. Please refresh the page and try again.');
         }

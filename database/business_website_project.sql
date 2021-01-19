@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2021 at 03:45 PM
+-- Generation Time: Jan 19, 2021 at 04:23 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -43,7 +43,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `content_id`, `user_id`, `IP`, `comment`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '127.0.0.1', 'Both systems can be adapted to the Client’s requirements, i.e. microphones, CD player, MP3 player etc, Equaliser, Effects unit etc.  The above solutions are low cost ‘unbalanced’ audio systems covering numerous audio applications.', 'True', '2021-01-16 10:03:25', '2021-01-16 10:04:02'),
+(1, 1, 2, '127.0.0.1', 'Both systems can be adapted to the Client’s requirements, i.e. microphones, CD player, MP3 player etc, Equaliser, Effects unit etc.  The above solutions are low cost ‘unbalanced’ audio systems covering numerous audio applications.', 'True', '2021-01-16 10:03:25', '2021-01-18 18:25:12'),
 (2, 2, 2, '127.0.0.1', 'If the client requires a more expensive ‘balanced’ system this too can be supplied by Berke IT Systems and fully installed to their exact requirements.', 'True', '2021-01-16 10:03:41', '2021-01-16 10:04:06'),
 (3, 12, 2, '127.0.0.1', 'Additional features are also available like audible alarms, LED status indicators, user replaceable battery, push-button circuit breakers and transformer-block spaced outlets.', 'True', '2021-01-16 10:05:06', '2021-01-16 10:05:35'),
 (4, 13, 2, '127.0.0.1', 'These issues have helped propel thin computing to the forefront, as a cost effective solution which leaves a very small environmental footprint.', 'True', '2021-01-16 10:05:26', '2021-01-16 10:05:38'),
@@ -176,6 +176,14 @@ CREATE TABLE `images` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `content_id`, `title`, `image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Image01', 'images/mMRqIs9nyJPQQ8osy0RHTBbP9MnbRppogqdOxLXF.png', '2021-01-17 07:37:25', '2021-01-17 07:37:25'),
+(2, 1, 'Image02', 'images/mfW9YUJuBnKsKBA1LZxN6oe7KBCj4aJtfHUp5Hbl.png', '2021-01-17 07:37:33', '2021-01-17 07:37:33');
+
 -- --------------------------------------------------------
 
 --
@@ -200,32 +208,32 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `parent_id`, `title`, `keywords`, `description`, `image`, `status`, `created_at`, `updated_at`, `slug`) VALUES
-(1, 0, 'Services', 'services', 'Our Services', NULL, 'True', '2021-01-14 10:46:44', '2021-01-15 14:00:04', 'services'),
-(2, 1, 'Audio Visual', 'audio visual', 'The right audio or visual solution can make a real difference to your business.', NULL, 'True', '2021-01-14 11:08:40', '2021-01-15 13:24:26', 'audio-visual'),
-(3, 1, 'Backup', 'backup', 'The most valuable asset is data, keep it secure with backup solutions.', NULL, 'True', '2021-01-14 11:32:35', '2021-01-15 13:25:49', 'backup'),
-(4, 1, 'Procurement', 'procurement', 'A straightforward solution to IT Procurement', NULL, 'True', '2021-01-15 09:27:07', '2021-01-15 13:27:05', 'procurement'),
-(5, 1, 'Security', 'security', 'The security of business IT systems has never been so important.', NULL, 'True', '2021-01-15 09:27:52', '2021-01-15 13:27:12', 'security'),
-(6, 1, 'Unified Communications', 'unified communications', 'Real time communication systems including Microsoft Teams…', NULL, 'True', '2021-01-15 09:28:27', '2021-01-15 13:27:17', 'unified-communications'),
-(7, 1, 'Virtualisation', 'virtualisation', 'A full range of virtualisation solutions from VMware and Microsoft Hyper-V…', NULL, 'True', '2021-01-15 09:29:16', '2021-01-15 13:27:23', 'virtualisation'),
-(8, 1, 'Printers & Consumables', 'printers, consumables', 'Complete IT Systems provide a full range of printers and consumables', NULL, 'True', '2021-01-15 09:29:50', '2021-01-15 13:27:28', 'printers-consumables'),
-(9, 1, 'Professional Services', 'professional services', 'Our highly accredited team with realworld experience.', NULL, 'True', '2021-01-15 09:30:55', '2021-01-15 13:27:33', 'professional-services'),
-(10, 0, 'Support', 'support', 'We can provide you with the IT Support solution your company needs.', NULL, 'True', '2021-01-15 09:32:02', '2021-01-15 13:27:37', 'support'),
-(11, 10, 'Worldwide IT Support', 'worldwide,  it, support', 'We can provide you with all your Worldwide IT Support.', NULL, 'True', '2021-01-15 09:32:55', '2021-01-15 13:27:44', 'worldwide-it-support'),
-(12, 0, 'IT Hardware & Infrastructure', 'it-hardware-infrastructure', 'Including Storage, Backup, Virtualization, Printers and Consumables.', NULL, 'True', '2021-01-15 09:38:52', '2021-01-15 13:39:34', 'it-hardware-infrastructure'),
-(13, 0, 'Reseller', 'reseller', 'Berke IT Systems reseller partners play a vital role in our business, providing sales, solution implementation, integration, technical support, and value-added services to customers', NULL, 'True', '2021-01-15 12:56:59', '2021-01-15 13:27:54', 'reseller'),
-(14, 13, 'Reseller Partner Benefits', 'reseller benefits', 'Berke IT Systems distribution business unit has formed partnerships and alliances with selected technology...', NULL, 'True', '2021-01-15 12:58:17', '2021-01-15 13:28:22', 'reseller-benefits'),
-(15, 0, 'Big Data', 'big data', 'Big Data & IoT (Internet of Things), are two sides of the same coin. With easy connectivity among humans & devices (IoT), speed of data generation is getting multi-fold (BigData), increasing exponentially in volume and is getting more complex in nature.', NULL, 'True', '2021-01-15 12:59:52', '2021-01-15 13:39:14', 'big-data'),
-(16, 15, 'BI and Analytics', 'bi, analytics', 'The business dynamics have been changing at a faster pace, driven by competition, mergers, social aspirations, government regulations, etc.', NULL, 'True', '2021-01-15 13:00:43', '2021-01-15 13:28:35', 'bi-and-analytics'),
-(17, 15, 'Enterprise Data Warehouse', 'enterprise, data, warehouse', 'Broad organizational questions become difficult to answer, and data is harder to analyze when it is fragmented and/or stored in multiple areas.', NULL, 'True', '2021-01-15 13:01:48', '2021-01-15 13:28:49', 'enterprise-data-warehouse'),
-(18, 15, 'System & Data Integration', 'system and data integration', 'System & data integration is the combination of technical and business processes used to extract, validate, map, transform...', NULL, 'True', '2021-01-15 13:07:53', '2021-01-15 13:28:56', 'system-and-data-integration'),
-(19, 15, 'Master Data Management', 'master data management', 'Master Data is the critical information about customers, products, location, employee, suppliers, asssets or similar categories.', NULL, 'True', '2021-01-15 13:08:29', '2021-01-15 13:29:03', 'master-data-management'),
-(20, 15, 'Big Data & IoT', 'big data, iot', 'Big Data & IoT (Internet of Things), are two sides of the same coin.', NULL, 'True', '2021-01-15 13:12:35', '2021-01-15 13:29:09', 'big-data-iot'),
-(21, 0, 'Cloud & Infrastructure', 'cloud infrastructure', 'We culminate cloud computing in your business in a way so that you not only enjoy the benefits of cloud computing, but the transformation is seamless and cost-effective in relation to the benefits accrued from it.', NULL, 'True', '2021-01-15 13:51:02', '2021-01-15 13:51:09', 'cloud-infrastructure'),
-(22, 21, 'Cloud Strategy & Consulting', 'cloud strategy', 'As cloud computing is a safe and secure way of storing and sharing data enabling businesses to access data and software on the internet as a service, organizations prefer to migrate to the cloud.', NULL, 'True', '2021-01-15 18:47:34', '2021-01-15 18:47:49', 'cloud-strategy'),
-(23, 21, 'Cloud Platform Support', 'cloud platform support', 'Moving to the cloud can result in immense benefits for your company. However, there are several factors that have to...', NULL, 'True', '2021-01-15 18:49:32', '2021-01-15 18:49:32', 'cloud-platform-support'),
-(24, 21, 'Microsoft SCC Manager (SCCM)', 'sccm, microsoft', 'Microsoft System Center Configuration Manager (SCCM) is a Windows product that enables administrators to manage the deployment and security of devices and applications across an enterprise.', NULL, 'True', '2021-01-15 18:50:41', '2021-01-15 18:51:54', 'sccm'),
-(25, 0, 'Database Projects', 'database, projects', 'Berke IT Systems executes Database Projects to meet your business needs. We have the right skills and expertise to get database projects as per client...', NULL, 'True', '2021-01-15 18:53:34', '2021-01-15 18:55:22', 'database-projects'),
-(26, 10, 'Network Support', 'network, support', 'Our support packages are tailored to meet the exact needs of each individual customer and include software and technical support...', NULL, 'True', '2021-01-15 18:58:21', '2021-01-15 18:58:28', 'network-support');
+(1, 0, 'Services', 'services', 'Our Services', 'images/S75RJ3ILlXtNToWpZZp6yAvkcVFvC3aFlm2MRG57.jpg', 'True', '2021-01-14 10:46:44', '2021-01-19 11:32:25', 'services'),
+(2, 1, 'Audio Visual', 'audio visual', 'The right audio or visual solution can make a real difference to your business.', 'images/CpjsxUZXe52K1ulIvyOfqbefXdRIMyvvAMFm23bc.jpg', 'True', '2021-01-14 11:08:40', '2021-01-19 11:32:55', 'audio-visual'),
+(3, 1, 'Backup', 'backup', 'The most valuable asset is data, keep it secure with backup solutions.', 'images/kK1meB5EKCoy4yOwRB6ZLUzXZxHFuABXMDhr4dz6.jpg', 'True', '2021-01-14 11:32:35', '2021-01-19 11:39:27', 'backup'),
+(4, 1, 'Procurement', 'procurement', 'A straightforward solution to IT Procurement', 'images/GyfU2JMkXtq7cc30wom2R3l3KViiq929lBYVEoXF.png', 'True', '2021-01-15 09:27:07', '2021-01-19 11:44:11', 'procurement'),
+(5, 1, 'Security', 'security', 'The security of business IT systems has never been so important.', 'images/Q9PUzJCowRU8SJIjHfYzVUl3Uz8SsXbwNG15IMuU.jpg', 'True', '2021-01-15 09:27:52', '2021-01-19 11:45:12', 'security'),
+(6, 1, 'Unified Communications', 'unified communications', 'Real time communication systems including Microsoft Teams…', 'images/EYgeDehmHyjb2Txd6vNHemAtTphDfvaK0epUyeuN.jpg', 'True', '2021-01-15 09:28:27', '2021-01-19 11:45:38', 'unified-communications'),
+(7, 1, 'Virtualisation', 'virtualisation', 'A full range of virtualisation solutions from VMware and Microsoft Hyper-V…', 'images/lSfkOoSGsn0qmRvFV8ggLg5tuoEWju3QMRREeNQN.webp', 'True', '2021-01-15 09:29:16', '2021-01-19 11:45:52', 'virtualisation'),
+(8, 1, 'Printers & Consumables', 'printers, consumables', 'Complete IT Systems provide a full range of printers and consumables', 'images/n4lxvu5S3osYmT199LCB4Hf09aSCOZY4YDHYQeou.jpg', 'True', '2021-01-15 09:29:50', '2021-01-19 11:49:02', 'printers-consumables'),
+(9, 1, 'Professional Services', 'professional services', 'Our highly accredited team with realworld experience.', 'images/zvolweVR97oCIzkvEGydFwyUOje7oLZYuAEw43Ne.jpg', 'True', '2021-01-15 09:30:55', '2021-01-19 11:49:27', 'professional-services'),
+(10, 0, 'Support', 'support', 'We can provide you with the IT Support solution your company needs.', 'images/dBKstn06ElPz1JtJYfFGIUb1QAWVMq5xQjkwCfcv.jpg', 'True', '2021-01-15 09:32:02', '2021-01-19 11:51:19', 'support'),
+(11, 10, 'Worldwide IT Support', 'worldwide,  it, support', 'We can provide you with all your Worldwide IT Support.', 'images/nEIESlILqPKWsb01h6aQrvYaMgn8Dy2srtTaALfR.jpg', 'True', '2021-01-15 09:32:55', '2021-01-19 11:50:43', 'worldwide-it-support'),
+(12, 0, 'IT Hardware & Infrastructure', 'it-hardware-infrastructure', 'Including Storage, Backup, Virtualization, Printers and Consumables.', 'images/qM04x9KHgVzJ6xjFgLAAWvYqnA99zg9aJwkCUT11.jpg', 'True', '2021-01-15 09:38:52', '2021-01-19 11:53:08', 'it-hardware-infrastructure'),
+(13, 0, 'Reseller', 'reseller', 'Berke IT Systems reseller partners play a vital role in our business, providing sales, solution implementation, integration, technical support, and value-added services to customers', 'images/fHUm0OCyzsRCv0Spc7l7AEr2hRbYtq9AD2cvZNTo.jpg', 'True', '2021-01-15 12:56:59', '2021-01-19 11:51:35', 'reseller'),
+(14, 13, 'Reseller Partner Benefits', 'reseller benefits', 'Berke IT Systems distribution business unit has formed partnerships and alliances with selected technology...', 'images/fWMXxuRhX43mIJHv2AQXGvTqrrUt0vUM9Rqq9q3c.jpg', 'True', '2021-01-15 12:58:17', '2021-01-19 11:53:22', 'reseller-benefits'),
+(15, 0, 'Big Data', 'big data', 'Big Data & IoT (Internet of Things), are two sides of the same coin. With easy connectivity among humans & devices (IoT), speed of data generation is getting multi-fold (BigData), increasing exponentially in volume and is getting more complex in nature.', 'images/zf1SI8BBPtWQVYjISGkCdxsEVmRjYGUFEANwywot.jpg', 'True', '2021-01-15 12:59:52', '2021-01-19 11:51:47', 'big-data'),
+(16, 15, 'BI and Analytics', 'bi, analytics', 'The business dynamics have been changing at a faster pace, driven by competition, mergers, social aspirations, government regulations, etc.', 'images/bQhBzArMvBAbESZrrcwItEtM3t47wynKNorFLvd0.png', 'True', '2021-01-15 13:00:43', '2021-01-19 11:53:43', 'bi-and-analytics'),
+(17, 15, 'Enterprise Data Warehouse', 'enterprise, data, warehouse', 'Broad organizational questions become difficult to answer, and data is harder to analyze when it is fragmented and/or stored in multiple areas.', 'images/tlVb83dUwAMNC4jaz1FmQbql3WhouDiVfBPOEd0g.png', 'True', '2021-01-15 13:01:48', '2021-01-19 11:54:03', 'enterprise-data-warehouse'),
+(18, 15, 'System & Data Integration', 'system and data integration', 'System & data integration is the combination of technical and business processes used to extract, validate, map, transform...', 'images/eBjMnWMtwgdQuBFY1SlHaFDb715x0yJtIleQVB1f.jpg', 'True', '2021-01-15 13:07:53', '2021-01-19 11:54:18', 'system-and-data-integration'),
+(19, 15, 'Master Data Management', 'master data management', 'Master Data is the critical information about customers, products, location, employee, suppliers, asssets or similar categories.', 'images/Kxoz9m0D780tGtu2Yus1UcdjJsG7pyP1NTpzYIJs.jpg', 'True', '2021-01-15 13:08:29', '2021-01-19 11:54:48', 'master-data-management'),
+(20, 15, 'Big Data & IoT', 'big data, iot', 'Big Data & IoT (Internet of Things), are two sides of the same coin.', 'images/D69ro8V12Pm0Kfrs2YxWBo0KkqCyXYNJdqDcUkhS.png', 'True', '2021-01-15 13:12:35', '2021-01-19 11:55:16', 'big-data-iot'),
+(21, 0, 'Cloud & Infrastructure', 'cloud infrastructure', 'We culminate cloud computing in your business in a way so that you not only enjoy the benefits of cloud computing, but the transformation is seamless and cost-effective in relation to the benefits accrued from it.', 'images/rEq38ItOLnLJ2JdKVPTnebmb8O7NhcZIogGVTT5Q.jpg', 'True', '2021-01-15 13:51:02', '2021-01-19 11:51:56', 'cloud-infrastructure'),
+(22, 21, 'Cloud Strategy & Consulting', 'cloud strategy', 'As cloud computing is a safe and secure way of storing and sharing data enabling businesses to access data and software on the internet as a service, organizations prefer to migrate to the cloud.', 'images/FDuQnGwkldIVPe3SG0UzgSRL8j6glc1zcHxFOXBT.jpg', 'True', '2021-01-15 18:47:34', '2021-01-19 11:55:32', 'cloud-strategy'),
+(23, 21, 'Cloud Platform Support', 'cloud platform support', 'Moving to the cloud can result in immense benefits for your company. However, there are several factors that have to...', 'images/xwQG40gbyuVRiPDzqwAUPEa3uMSzLP2tixkahwyu.jpg', 'True', '2021-01-15 18:49:32', '2021-01-19 11:55:42', 'cloud-platform-support'),
+(24, 21, 'Microsoft SCC Manager (SCCM)', 'sccm, microsoft', 'Microsoft System Center Configuration Manager (SCCM) is a Windows product that enables administrators to manage the deployment and security of devices and applications across an enterprise.', 'images/6NOcxcOwiqQrj85GtOuZyLKzPdzExQ2Ip7tXQfU9.png', 'True', '2021-01-15 18:50:41', '2021-01-19 11:55:55', 'sccm'),
+(25, 0, 'Database Projects', 'database, projects', 'Berke IT Systems executes Database Projects to meet your business needs. We have the right skills and expertise to get database projects as per client...', 'images/BGy636Igi88IG0VCmkfnKl9PjYBDWAythW04SRTM.jpg', 'True', '2021-01-15 18:53:34', '2021-01-19 11:56:08', 'database-projects'),
+(26, 10, 'Network Support', 'network, support', 'Our support packages are tailored to meet the exact needs of each individual customer and include software and technical support...', 'images/d63r32TS9UAw9cKPkoQDEr4MMxOLGizAv82KJTXF.jpg', 'True', '2021-01-15 18:58:21', '2021-01-19 11:52:46', 'network-support');
 
 -- --------------------------------------------------------
 
@@ -251,7 +259,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `note`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'John M. Mills', 'JohnMMills@rhyta.com', '585-798-3169', 'IT Question', 'How you manage IT is critical to your competitiveness. Why?', NULL, 'New', '2021-01-16 11:34:43', '2021-01-16 11:34:43'),
+(1, 'John M. Mills', 'JohnMMills@rhyta.com', '585-798-3169', 'IT Question', 'How you manage IT is critical to your competitiveness. Why?', '<p>You can see the answer on the FAQ page.</p>', 'Read', '2021-01-16 11:34:43', '2021-01-18 18:27:40'),
 (2, 'Joseph E. Franco', 'JosephEFranco@jourrapide.com', '817-942-5424', 'Company Goals', 'What are the company\'s overall goals for this year?', NULL, 'New', '2021-01-16 11:37:58', '2021-01-16 11:37:58'),
 (3, 'Marlene J. Pyle', 'MarleneJPyle@jourrapide.com', '516-636-1740', 'Company Events', 'Does the company ever hold out-of-the-office events?', NULL, 'New', '2021-01-16 11:38:58', '2021-01-16 11:38:58');
 
@@ -295,7 +303,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2021_01_11_223818_comment', 12),
 (25, '2021_01_13_193209_create_faqs_table', 13),
 (26, '2021_01_13_195016_faq', 13),
-(27, '2021_01_16_140805_add_address_to_settings', 14);
+(27, '2021_01_16_140805_add_address_to_settings', 14),
+(28, '2021_01_18_175951_create_roles_table', 15),
+(30, '2021_01_18_180201_roles', 16),
+(31, '2021_01_18_180414_create_role_user_table', 16),
+(32, '2021_01_18_181310_role_user', 16);
 
 -- --------------------------------------------------------
 
@@ -330,6 +342,46 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', NULL, NULL),
+(2, 'user', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_user`
+--
+
+INSERT INTO `role_user` (`role_id`, `user_id`) VALUES
+(1, 1),
+(2, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -347,7 +399,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('9JvDDzcSoq0ns296WdjKET2yN8inVymSvqwHy6cv', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTmJiblhuaTlQM1RXUDk5UGJreGxzUk5zYmZqRXlKaGdpdlpFMjJ6WCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1610808323);
+('8HSDAMF7DybbVcqJUy1k5cz1v6aq99vWG41ybS78', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZE9SZVc1bGhCQnFjSWpyU0tqeVVVcTdMY0JmTlo2aG02UVBsUVc1SSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1611069681),
+('p0w6tS9vLGpRsZy4c7ux0WIvZpdd8g192XnIPOsQ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Edg/87.0.664.75', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUnNvaVdodUcxZVdma2pSR0p0MXNmTUpNMGYxdURJaXBud2E2eVdNUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1611068436);
 
 -- --------------------------------------------------------
 
@@ -416,7 +469,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `phone`, `address`) VALUES
-(1, 'Berke Kiran', 'berkekiran@hotmail.com', NULL, '$2y$10$phitG6pSqfE/jXtPpnDmA.QgVm5Jsu.Z6s04QD1pF5GSkAmjIct5.', NULL, NULL, 'GLlH7zfAh0yivJ3No2XvPlUhqJMTXz3wBSs8b8PTdOIxXbyVGWdN04phrfle', NULL, 'profile-photos/w9cxSgGOd0Hk4sxIGl6nF35Xidg5pEQAXjDo0x5V.png', '2021-01-12 10:22:08', '2021-01-16 11:43:52', '05551112435', ' 3132 Doctors Drive City, Los Angeles, California'),
+(1, 'Berke Kiran', 'berkekiran@hotmail.com', NULL, '$2y$10$phitG6pSqfE/jXtPpnDmA.QgVm5Jsu.Z6s04QD1pF5GSkAmjIct5.', NULL, NULL, '6viuVO5tyLwodhafCc3iNTfOrSibKoBUgzoPfJ3zOgUfEmzc6jZyrDveRqbD', NULL, 'profile-photos/w9cxSgGOd0Hk4sxIGl6nF35Xidg5pEQAXjDo0x5V.png', '2021-01-12 10:22:08', '2021-01-18 16:39:07', '209-364-0936', '595 Big Rock Cove Lane Los Angeles, CA 90034'),
 (2, 'Rob Daniel', 'robdaniel@hotmail.com', NULL, '$2y$10$3VdpOtrRgfVzQpYgkhUOJev0JzASZaosANNC/2tupFPrZ2gRAmiJi', NULL, NULL, NULL, NULL, 'profile-photos/XvbZlWD7debSFsedMf5kkSfSCsV7XD4NmiXkSld3.png', '2021-01-16 09:52:39', '2021-01-16 09:54:04', '+1 843-737-6180', '2128 Pendergrass Ln, Mt Pleasant, SC 29464, United States');
 
 --
@@ -487,6 +540,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -539,7 +598,7 @@ ALTER TABLE `faqs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -557,13 +616,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -575,7 +640,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

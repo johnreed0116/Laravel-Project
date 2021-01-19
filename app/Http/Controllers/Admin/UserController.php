@@ -49,9 +49,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, $id)
     {
-
+        $user = User::find($id);
+        $rolelist = Role::all()->sortBy('name');
+        return view('admin.user_show', ['user' => $user, 'rolelist' => $rolelist]);
     }
 
     /**
@@ -106,8 +108,8 @@ class UserController extends Controller
 
     public function user_roles(User $user, $id){
         $user = User::find($id);
-        $userlist = Role::all()->sortBy('name');
-        return view('admin.user_roles', ['user' => $user, 'userlist' => $userlist]);
+        $rolelist = Role::all()->sortBy('name');
+        return view('admin.user_roles', ['user' => $user, 'rolelist' => $rolelist]);
     }
 
     public function user_role_store(Request $request, User $user, $id){

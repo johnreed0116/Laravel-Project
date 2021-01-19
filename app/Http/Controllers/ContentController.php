@@ -72,7 +72,14 @@ class ContentController extends Controller
             $content->image = Storage::putFile('images', $request->file('image'));
         }
         $content->slug = $request->input('slug');
-        $content->status = 'False';
+
+        $userRoles = Auth::user()->roles->pluck('name');
+        if($userRoles->contains('admin')) {
+            $content->status = 'True';
+        }else{
+            $content->status = 'False';
+        }
+
         $content->save();
 
         return redirect()->route('user_content');

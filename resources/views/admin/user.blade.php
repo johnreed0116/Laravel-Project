@@ -33,7 +33,11 @@
                                                 <img src="{{ Storage::url($rs->profile_photo_path) }}" height="30" alt="" >
                                             @endif
                                         </td>
-                                        <td>{{ $rs->name }}</td>
+                                        <td>
+                                            <a style="color: cornflowerblue;" href="{{ route('admin_user_show', ['id' => $rs->id]) }}" onclick="return !window.open(this.href, '', 'top=120 left=120 width=640 height=720')">
+                                                {{ $rs->name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $rs->email }}</td>
                                         <td>{{ $rs->phone }}</td>
                                         <td>{{ $rs->address }}</td>

@@ -29,7 +29,11 @@
                                     <tr class="tr-shadow">
                                         <td>{{ $rs->id }}</td>
                                         <td><a style="color: cornflowerblue;" href="{{ route('content', ['id' => $rs->content->id, 'slug'=>$rs->content->slug]) }}">{{ $rs->content->title }}</a></td>
-                                        <td>{{ $rs->user->name }}</td>
+                                        <td>
+                                            <a style="color: cornflowerblue;" href="{{ route('admin_user_show', ['id' => $rs->user->id]) }}" onclick="return !window.open(this.href, '', 'top=120 left=120 width=640 height=720')">
+                                                {{ $rs->user->name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $rs->IP }}</td>
                                         <td>{{ $rs->comment }}</td>
                                         <td>{{ $rs->created_at }}</td>

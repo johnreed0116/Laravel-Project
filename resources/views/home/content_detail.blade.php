@@ -27,7 +27,11 @@
 @section('content')
 
     <!-- full Title -->
-    <div class="full-title">
+    @if($content->menu_id != '0')
+        <div class="full-title" style="background: url({{ Storage::url(\App\Models\Menu::where('id','=',$content->menu_id)->first()->image) }}) no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+    @else
+        <div class="full-title">
+    @endif
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3"> {{ $content->title }} </h1>

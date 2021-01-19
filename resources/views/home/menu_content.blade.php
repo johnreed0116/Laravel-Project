@@ -7,7 +7,7 @@
 @section('content')
 
     <!-- full Title -->
-    <div class="full-title">
+    <div class="full-title" style="background: url({{ Storage::url($menu->image) }}) no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3"> {{ $menu->title }} </h1>

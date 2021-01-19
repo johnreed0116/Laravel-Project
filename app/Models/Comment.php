@@ -13,7 +13,8 @@ class Comment extends Model
         'content_id',
         'user_id',
         'IP',
-        'comment'
+        'comment',
+        'status'
     ];
 
     public function content(){
