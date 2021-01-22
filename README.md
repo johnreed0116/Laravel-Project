@@ -8,7 +8,6 @@ Business Website Project
 - Jetstream
 - Livewire
 - Javascript
-- Jquery
 - Css
 - Html
 <br>
