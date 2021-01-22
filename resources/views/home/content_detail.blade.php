@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-16 blog-entries">
 
-                    <div style="z-index: -1;" id="Indicators" class="imgslider carousel slide" data-ride="carousel">
+                    <div id="Indicators" class="imgslider carousel slide" data-ride="carousel">
 
                         @if($imagelist->count() != 0)
                         <ul class="carousel-indicators">
@@ -70,7 +70,7 @@
                         </ul>
                         @endif
 
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" style="z-index: -1;">
 
                             <div class="carousel-item active">
                                 <img style="min-width: 100%; height: 100%;" class="imgslider d-block w-100" src="{{ Storage::url($content->image) }}" alt="" />
@@ -85,8 +85,9 @@
                             @endif
 
                         </div>
+
                         @if($imagelist->count() != 0)
-                            <a class="carousel-control-prev" href="#Indicators" role="button" data-slide="prev">
+                            <a  class="carousel-control-prev" href="#Indicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
