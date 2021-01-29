@@ -4,7 +4,13 @@
     @if(!empty($query))
         <datalist id="mylist">
             @foreach($contentlist as $rs)
-                <option value="{{ $rs->title }}">{{ $rs->menu->title }}</option>
+                <option value="{{ $rs->title }}">
+                    @if($rs->menu_id != '0')
+                    {{ $rs->menu->title }}
+                    @else
+                       Home Page
+                    @endif
+                </option>
             @endforeach
         </datalist>
     @endif
